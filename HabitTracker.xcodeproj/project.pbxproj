@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E283B67D2B38CC4A00FA847F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283B67C2B38CC4A00FA847F /* HomeView.swift */; };
+		E283B67F2B38CC8300FA847F /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283B67E2B38CC8300FA847F /* Habit.swift */; };
 		E2DEEB932B38BDE7000395A9 /* HabitTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEEB922B38BDE7000395A9 /* HabitTrackerApp.swift */; };
 		E2DEEB952B38BDE7000395A9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEEB942B38BDE7000395A9 /* ContentView.swift */; };
 		E2DEEB972B38BDE7000395A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2DEEB962B38BDE7000395A9 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E283B67C2B38CC4A00FA847F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E283B67E2B38CC8300FA847F /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		E2DEEB8F2B38BDE7000395A9 /* HabitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2DEEB922B38BDE7000395A9 /* HabitTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTrackerApp.swift; sourceTree = "<group>"; };
 		E2DEEB942B38BDE7000395A9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +36,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E283B67B2B38CC2F00FA847F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E283B67C2B38CC4A00FA847F /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E2DEEB862B38BDE7000395A9 = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +63,10 @@
 		E2DEEB912B38BDE7000395A9 /* HabitTracker */ = {
 			isa = PBXGroup;
 			children = (
+				E283B67B2B38CC2F00FA847F /* Views */,
 				E2DEEB922B38BDE7000395A9 /* HabitTrackerApp.swift */,
 				E2DEEB942B38BDE7000395A9 /* ContentView.swift */,
+				E283B67E2B38CC8300FA847F /* Habit.swift */,
 				E2DEEB962B38BDE7000395A9 /* Assets.xcassets */,
 				E2DEEB982B38BDE7000395A9 /* Preview Content */,
 			);
@@ -137,7 +151,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E283B67D2B38CC4A00FA847F /* HomeView.swift in Sources */,
 				E2DEEB952B38BDE7000395A9 /* ContentView.swift in Sources */,
+				E283B67F2B38CC8300FA847F /* Habit.swift in Sources */,
 				E2DEEB932B38BDE7000395A9 /* HabitTrackerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
