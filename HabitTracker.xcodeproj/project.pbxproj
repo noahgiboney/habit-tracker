@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E283B67D2B38CC4A00FA847F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283B67C2B38CC4A00FA847F /* HomeView.swift */; };
+		E27A73242B38D4DE0013AFEC /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27A73232B38D4DE0013AFEC /* AddHabitView.swift */; };
 		E283B67F2B38CC8300FA847F /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283B67E2B38CC8300FA847F /* Habit.swift */; };
 		E283B6812B38D0FA00FA847F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283B6802B38D0FA00FA847F /* Colors.swift */; };
 		E2DEEB932B38BDE7000395A9 /* HabitTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEEB922B38BDE7000395A9 /* HabitTrackerApp.swift */; };
@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E283B67C2B38CC4A00FA847F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E27A73232B38D4DE0013AFEC /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
 		E283B67E2B38CC8300FA847F /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		E283B6802B38D0FA00FA847F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E2DEEB8F2B38BDE7000395A9 /* HabitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,7 +41,7 @@
 		E283B67B2B38CC2F00FA847F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E283B67C2B38CC4A00FA847F /* HomeView.swift */,
+				E27A73232B38D4DE0013AFEC /* AddHabitView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -154,11 +154,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E283B67D2B38CC4A00FA847F /* HomeView.swift in Sources */,
 				E283B6812B38D0FA00FA847F /* Colors.swift in Sources */,
 				E2DEEB952B38BDE7000395A9 /* ContentView.swift in Sources */,
 				E283B67F2B38CC8300FA847F /* Habit.swift in Sources */,
 				E2DEEB932B38BDE7000395A9 /* HabitTrackerApp.swift in Sources */,
+				E27A73242B38D4DE0013AFEC /* AddHabitView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

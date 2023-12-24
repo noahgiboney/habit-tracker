@@ -8,13 +8,12 @@
 import Foundation
 import Observation
 
-@Observable
-class Habit: Identifiable, Hashable{
+struct Habit: Identifiable, Hashable{
     
     var id = UUID()
-    let name: String
-    let count: Int
-    let description: String
+    var name: String
+    var count: Int
+    var description: String
     
     init(id: UUID = UUID(), name: String, count: Int, description: String) {
         self.id = id
@@ -34,4 +33,9 @@ class Habit: Identifiable, Hashable{
         hasher.combine(name)
         hasher.combine(description)
     }
+}
+
+@Observable
+class Habits{
+    var userHabits: [Habit] = []
 }
