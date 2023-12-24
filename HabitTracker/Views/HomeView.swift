@@ -22,6 +22,7 @@ struct HomeView: View {
                     .padding()
                 }
             }
+            
             .navigationTitle("Habit Tracker")
             .navigationDestination(for: Habit.self){ habit in
                 Text("\(habit.id)")
