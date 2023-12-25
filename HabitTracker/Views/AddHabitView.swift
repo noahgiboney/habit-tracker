@@ -53,6 +53,7 @@ struct AddHabitView: View {
                     Button("Cancel", role: .destructive){
                         dismiss()
                     }
+                    .foregroundColor(.red)
                 }
             }
         }

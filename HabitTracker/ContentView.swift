@@ -14,27 +14,19 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack{
-            Form{
+            List{
                 ForEach(habits.userHabits){ habit in
-                    Section{
-                        NavigationLink(value: habit, label: {
-                            HStack{
-                                Text(habit.name)
-                                Text("\(habit.count)")
-                            }
-                        })
+                    NavigationLink(habit.name, value: habit)
                         .padding()
-                    }
                 }
-                .onDelete(perform:{ indexSet in
+                .onDelete(perform: { indexSet in
                     delete(at: indexSet)
                 })
-
+            }
+            .navigationDestination(for: Habit.self){ habit in
+                HabitDetailView(habit: habit)
             }
             .navigationTitle("Habit Tracker")
-            .navigationDestination(for: Habit.self){ habit in
-                Text("\(habit.id)")
-            }
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){
                     Button{
@@ -47,7 +39,8 @@ struct ContentView: View {
                     EditButton()
                 }
             }
-        }.sheet(isPresented: $addHabit, content: {
+        }
+        .sheet(isPresented: $addHabit, content: {
             AddHabitView(habits: habits)
         })
     }
