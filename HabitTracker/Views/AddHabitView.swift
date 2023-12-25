@@ -10,7 +10,7 @@ import SwiftUI
 struct AddHabitView: View {
     @Environment(\.dismiss) var dismiss
     
-    var habits = Habits()
+    var habits: Habits
     
     @State private var habitName = ""
     @State private var habitDescription = ""
@@ -60,5 +60,5 @@ struct AddHabitView: View {
 }
 
 #Preview {
-    AddHabitView()
+    AddHabitView(habits: Habits())
 }

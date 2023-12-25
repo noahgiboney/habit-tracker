@@ -8,7 +8,7 @@
 import Foundation
 import Observation
 
-struct Habit: Identifiable, Hashable{
+struct Habit: Identifiable, Hashable, Codable{
     
     var id = UUID()
     var name: String
@@ -37,5 +37,21 @@ struct Habit: Identifiable, Hashable{
 
 @Observable
 class Habits{
-    var userHabits: [Habit] = []
+    var userHabits: [Habit] = [] {
+        didSet{
+            if let data = try? JSONEncoder().encode(userHabits){
+                UserDefaults.standard.set(data, forKey: "UserHabits")
+            }
+        }
+    }
+    
+    init(){
+        if let savedHabits = UserDefaults.standard.data(forKey: "UserHabits"){
+            if let decodedData = try? JSONDecoder().decode([Habit].self, from: savedHabits){
+                userHabits = decodedData
+                return
+            }
+        }
+        userHabits = []
+    }
 }

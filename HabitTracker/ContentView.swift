@@ -9,13 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var addHabit = false
-    var habits = Habits()
+    @State private var habits = Habits()
     
     var body: some View {
         NavigationStack{
             Form{
                 ForEach(habits.userHabits){ habit in
-                    Text(habit.name)
+                    NavigationLink(value: habit, label: {
+                        HStack{
+                            Text(habit.name)
+                            Text("\(habit.count)")
+                        }
+                    })
                     .padding()
                     
                     Button("Increment"){
@@ -23,7 +28,6 @@ struct ContentView: View {
                     }
                 }
             }
-            
             .navigationTitle("Habit Tracker")
             .navigationDestination(for: Habit.self){ habit in
                 Text("\(habit.id)")
@@ -38,7 +42,7 @@ struct ContentView: View {
                 }
             }
         }.sheet(isPresented: $addHabit, content: {
-            AddHabitView()
+            AddHabitView(habits: habits)
         })
     }
 }
