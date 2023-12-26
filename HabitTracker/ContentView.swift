@@ -26,6 +26,7 @@ struct ContentView: View {
             .navigationDestination(for: Habit.self){ habit in
                 HabitDetailView(habits: habits, habit: habit)
             }
+            .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
             .navigationTitle("Habit Tracker")
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){
@@ -34,6 +35,7 @@ struct ContentView: View {
                     }label: {
                         Text("Add")
                     }
+                    .toolBar()
                 }
                 ToolbarItem(placement: .topBarLeading){
                     EditButton()

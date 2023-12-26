@@ -25,7 +25,7 @@ struct HabitDetailView: View {
                 HStack{
                     Spacer()
                     Button{
-                        habit.count += 1
+                        habit.counts.append(Date())
                         saveData()
                     }label: {
                         Text("Add Entry")
@@ -40,15 +40,18 @@ struct HabitDetailView: View {
             }
             
             Section{
-                Text("Freqency: \(habit.count)")
+                Text("Freqency: \(habit.counts.count)")
                     .font(.headline)
             }
             
             
             Section("Recent activity"){
-                Text("Some entry")
+                ForEach(habit.counts, id: \.self){ date in
+                    Text("\(date.formattedDate)")
+                }
             }
         }
+        .preferredColorScheme(.dark)
         .navigationTitle(habit.name)
     }
     

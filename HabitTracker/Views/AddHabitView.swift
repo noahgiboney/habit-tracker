@@ -36,6 +36,7 @@ struct AddHabitView: View {
                 }
             }
             .navigationTitle("Add Habit")
+            .preferredColorScheme(.dark)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem(placement: .confirmationAction) {
@@ -43,13 +44,15 @@ struct AddHabitView: View {
                         habits.userHabits.append(Habit(name: habitName, description: habitDescription, type: habitType))
                         dismiss()
                     }
+                    .toolBar()
                 }
                 
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel", role: .destructive){
                         dismiss()
                     }
-                    .foregroundColor(.red)
+                    .toolBar(foreground: .red)
+                    
                 }
             }
         }
