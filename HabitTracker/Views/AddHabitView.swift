@@ -13,7 +13,6 @@ struct AddHabitView: View {
     var habits: Habits
     
     @State private var habitName = ""
-    @State private var habitDescription = ""
     @State private var habitType: HabitTypes = .Productive
     
     var body: some View {
@@ -30,10 +29,6 @@ struct AddHabitView: View {
                     }
                     .pickerStyle(.segmented)
                 }
-                
-                Section{
-                    TextField("Breif Description", text: $habitDescription)
-                }
             }
             .navigationTitle("Add Habit")
             .preferredColorScheme(.dark)
@@ -41,7 +36,7 @@ struct AddHabitView: View {
             .toolbar{
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done"){
-                        habits.userHabits.append(Habit(name: habitName, description: habitDescription, type: habitType))
+                        habits.userHabits.append(Habit(name: habitName, type: habitType))
                         dismiss()
                     }
                     .toolBar()

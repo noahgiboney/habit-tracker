@@ -25,10 +25,10 @@ class Habit: Identifiable, Hashable, Codable{
     var logs: [Log]
     var type: HabitTypes
     
-    init(name: String,description: String, type: HabitTypes) {
-        self.id = UUID()
+    init(name: String, type: HabitTypes) {
         self.name = name
         self.type = type
+        self.id = UUID()
         self.logs = []
     }
     

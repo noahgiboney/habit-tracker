@@ -91,5 +91,5 @@ struct HabitDetailView: View {
 #Preview {
 
     
-    HabitDetailView(habits: Habits(), habit: Habit(name: "Gym", description: "Working Out", type: .Productive))
+    HabitDetailView(habits: Habits(), habit: Habit(name: "Gym", type: .Productive))
 }
