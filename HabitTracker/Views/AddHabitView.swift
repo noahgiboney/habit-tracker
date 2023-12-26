@@ -36,7 +36,7 @@ struct AddHabitView: View {
             .toolbar{
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done"){
-                        habits.userHabits.append(Habit(name: habitName, type: habitType))
+                        habits.userHabits.insert(Habit(name: habitName, type: habitType), at: 0)
                         dismiss()
                     }
                     .toolBar()

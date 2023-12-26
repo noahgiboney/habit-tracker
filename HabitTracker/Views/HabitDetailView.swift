@@ -25,7 +25,7 @@ struct HabitDetailView: View {
             }
             
             Section{
-                TextField("Breif Description of Habit log", text: $logDescription)
+                TextField("Breif Description of entry", text: $logDescription)
                     .padding(.bottom)
             }
             

@@ -18,6 +18,7 @@ struct ContentView: View {
                 ForEach(habits.userHabits){ habit in
                     NavigationLink(habit.name, value: habit)
                         .padding()
+                        .foregroundColor(habit.type == .Productive ? .green : .red)
                 }
                 .onDelete(perform: { indexSet in
                     delete(at: indexSet)
