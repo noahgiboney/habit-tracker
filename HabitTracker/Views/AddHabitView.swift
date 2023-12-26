@@ -16,10 +16,6 @@ struct AddHabitView: View {
     @State private var habitDescription = ""
     @State private var habitType: HabitTypes = .Productive
     
-    enum HabitTypes: String, CaseIterable{
-        case Productive, Bad
-    }
-    
     var body: some View {
         NavigationStack{
             Form{
@@ -44,7 +40,7 @@ struct AddHabitView: View {
             .toolbar{
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done"){
-                        habits.userHabits.append(Habit(name: habitName, count: 0, description: habitDescription))
+                        habits.userHabits.append(Habit(name: habitName, description: habitDescription, type: habitType))
                         dismiss()
                     }
                 }

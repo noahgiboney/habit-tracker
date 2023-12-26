@@ -24,7 +24,7 @@ struct ContentView: View {
                 })
             }
             .navigationDestination(for: Habit.self){ habit in
-                HabitDetailView(habit: habit)
+                HabitDetailView(habits: habits, habit: habit)
             }
             .navigationTitle("Habit Tracker")
             .toolbar{

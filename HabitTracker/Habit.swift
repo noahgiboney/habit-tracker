@@ -8,18 +8,25 @@
 import Foundation
 import Observation
 
-struct Habit: Identifiable, Hashable, Codable{
+enum HabitTypes: String, CaseIterable, Codable{
+    case Productive, Bad
+}
+
+@Observable
+class Habit: Identifiable, Hashable, Codable{
     
-    var id = UUID()
+    let id: UUID
     var name: String
     var count: Int
     var description: String
+    var type: HabitTypes
     
-    init(id: UUID = UUID(), name: String, count: Int, description: String) {
-        self.id = id
+    init(name: String,description: String, type: HabitTypes) {
+        self.id = UUID()
         self.name = name
-        self.count = count
         self.description = description
+        self.type = type
+        self.count = 0
     }
     
     //these functions are required to conform to Hashable protocol
@@ -32,26 +39,6 @@ struct Habit: Identifiable, Hashable, Codable{
         hasher.combine(count)
         hasher.combine(name)
         hasher.combine(description)
-    }
-}
-
-@Observable
-class Habits{
-    var userHabits: [Habit] = [] {
-        didSet{
-            if let data = try? JSONEncoder().encode(userHabits){
-                UserDefaults.standard.set(data, forKey: "UserHabits")
-            }
-        }
-    }
-    
-    init(){
-        if let savedHabits = UserDefaults.standard.data(forKey: "UserHabits"){
-            if let decodedData = try? JSONDecoder().decode([Habit].self, from: savedHabits){
-                userHabits = decodedData
-                return
-            }
-        }
-        userHabits = []
+        hasher.combine(type)
     }
 }
