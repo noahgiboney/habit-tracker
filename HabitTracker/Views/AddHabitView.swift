@@ -15,6 +15,10 @@ struct AddHabitView: View {
     @State private var habitName = ""
     @State private var habitType: HabitTypes = .Productive
     
+    var addButtonDisabled: Bool{
+        return habitName.count == 0
+    }
+    
     var body: some View {
         NavigationStack{
             Form{
@@ -39,6 +43,7 @@ struct AddHabitView: View {
                         habits.userHabits.insert(Habit(name: habitName, type: habitType), at: 0)
                         dismiss()
                     }
+                    .disabled(addButtonDisabled)
                     .toolBar()
                 }
                 
