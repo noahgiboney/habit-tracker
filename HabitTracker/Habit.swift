@@ -12,21 +12,24 @@ enum HabitTypes: String, CaseIterable, Codable{
     case Productive, Destructive
 }
 
+struct Log: Codable, Hashable {
+    var date: Date
+    var description: String
+}
+
 @Observable
 class Habit: Identifiable, Hashable, Codable{
     
     let id: UUID
     var name: String
-    var counts: [Date]
-    var description: String
+    var logs: [Log]
     var type: HabitTypes
     
     init(name: String,description: String, type: HabitTypes) {
         self.id = UUID()
         self.name = name
-        self.description = description
         self.type = type
-        self.counts = []
+        self.logs = []
     }
     
     //these functions are required to conform to Hashable protocol
@@ -36,9 +39,8 @@ class Habit: Identifiable, Hashable, Codable{
     
     func hash(into hasher: inout Hasher){
         hasher.combine(id)
-        hasher.combine(counts)
+        hasher.combine(logs)
         hasher.combine(name)
-        hasher.combine(description)
         hasher.combine(type)
     }
 }

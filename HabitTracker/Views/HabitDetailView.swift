@@ -9,26 +9,37 @@ import SwiftUI
 
 struct HabitDetailView: View {
     
+    @State private var logDescription = ""
     var habits: Habits
     var habit: Habit
     
+    var logButtonDisabled: Bool{
+        return logDescription.count == 0
+    }
+    
     var body: some View {
-        List{
+        Form{
             Section(){
                 Text(habit.type.rawValue)
-                    .foregroundStyle(habit.type == .Productive ? .blue : .red)
-                Text(habit.description)
-                    .padding(.vertical)
+                    .foregroundStyle(habit.type == .Productive ? .green : .red)
+            }
+            
+            Section{
+                TextField("Breif Description of Habit log", text: $logDescription)
+                    .padding(.bottom)
             }
             
             Section{
                 HStack{
                     Spacer()
                     Button{
-                        habit.counts.append(Date())
+                        
+                        withAnimation{
+                            habit.logs.insert(Log(date: Date(), description: logDescription), at: 0)
+                        }
                         saveData()
                     }label: {
-                        Text("Add Entry")
+                        Text("Log Habit")
                         Image(systemName: "plus")
                     }
                     .padding(10)
@@ -38,16 +49,28 @@ struct HabitDetailView: View {
                 }
                 .listRowBackground(Color.white.opacity(0))
             }
+            .disabled(logButtonDisabled)
             
-            Section{
-                Text("Freqency: \(habit.counts.count)")
+            Section("total freqency"){
+                Text("\(habit.logs.count)")
                     .font(.headline)
             }
             
             
-            Section("Recent activity"){
-                ForEach(habit.counts, id: \.self){ date in
-                    Text("\(date.formattedDate)")
+            Section("Habit Log"){
+                
+                if habit.logs.isEmpty {
+                    Text("No logs for this habit yet")
+                }
+                else{
+                    ForEach(habit.logs, id: \.date){ log in
+                        VStack(alignment: .leading){
+                            Text(log.date.formattedDate)
+                                .font(.caption)
+                            Text(log.description)
+                                .padding()
+                        }
+                    }
                 }
             }
         }
