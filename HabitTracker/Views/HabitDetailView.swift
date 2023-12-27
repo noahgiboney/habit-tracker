@@ -18,64 +18,63 @@ struct HabitDetailView: View {
     }
     
     var body: some View {
-        Form{
-            Section(){
-                Text(habit.type.rawValue)
-                    .foregroundStyle(habit.type == .Productive ? .green : .red)
-            }
-            
-            Section{
-                TextField("Breif Description of entry", text: $logDescription)
-                    .padding(.bottom)
-            }
-            
-            Section{
-                HStack{
-                    Spacer()
-                    Button{
-                        
-                        withAnimation{
-                            habit.logs.insert(Log(date: Date(), description: logDescription), at: 0)
-                        }
-                        saveData()
-                    }label: {
-                        Text("Log Habit")
-                        Image(systemName: "plus")
-                    }
-                    .padding(10)
-                    .font(.title2)
-                    .buttonStyle(.bordered)
-                    Spacer()
+        NavigationStack{
+            Form{
+                Section{
+                    Text("This is a " + habit.type.rawValue.lowercased() + " habit")
+                        .foregroundStyle(habit.type == .Productive ? .green : .red)
+                    TextField("Breif Description of entry", text: $logDescription)
+                        .padding(.bottom)
                 }
-                .listRowBackground(Color.white.opacity(0))
-            }
-            .disabled(logButtonDisabled)
-            
-            Section("total freqency"){
-                Text("\(habit.logs.count)")
-                    .font(.headline)
-            }
-            
-            
-            Section("Habit Log"){
                 
-                if habit.logs.isEmpty {
-                    Text("No logs for this habit yet")
+                Section{
+                    HStack{
+                        Spacer()
+                        Button{
+                            
+                            withAnimation{
+                                habit.logs.insert(Log(date: Date(), description: logDescription), at: 0)
+                            }
+                            saveData()
+                        }label: {
+                            Text("Log Habit")
+                            Image(systemName: "plus")
+                        }
+                        .padding(10)
+                        .font(.title2)
+                        .buttonStyle(.bordered)
+                        Spacer()
+                    }
+                    .listRowBackground(Color.white.opacity(0))
                 }
-                else{
-                    ForEach(habit.logs, id: \.date){ log in
-                        VStack(alignment: .leading){
-                            Text(log.date.formattedDate)
-                                .font(.caption)
-                            Text(log.description)
-                                .padding()
+                .disabled(logButtonDisabled)
+                
+                Section("total freqency"){
+                    Text("\(habit.logs.count)")
+                        .font(.headline)
+                }
+                
+                
+                Section("Habit Log"){
+                    
+                    if habit.logs.isEmpty {
+                        Text("No logs for this habit yet")
+                    }
+                    else{
+                        ForEach(habit.logs, id: \.date){ log in
+                            VStack(alignment: .leading){
+                                Text(log.date.formattedDate)
+                                    .font(.caption)
+                                Text(log.description)
+                                    .padding()
+                            }
                         }
                     }
                 }
             }
+            .preferredColorScheme(.dark)
+            .navigationTitle(habit.name)
         }
-        .preferredColorScheme(.dark)
-        .navigationTitle(habit.name)
     }
     
     func saveData() {

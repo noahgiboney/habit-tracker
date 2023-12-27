@@ -16,16 +16,15 @@ struct ContentView: View {
         NavigationStack{
             List{
                 ForEach(habits.userHabits){ habit in
-                    NavigationLink(habit.name, value: habit)
-                        .padding()
-                        .foregroundColor(habit.type == .Productive ? .green : .red)
+                    NavigationLink(habit.name){
+                        HabitDetailView(habits: habits, habit: habit)
+                    }
+                    .padding()
+                    .foregroundColor(habit.type == .Productive ? .green : .red)
                 }
                 .onDelete(perform: { indexSet in
                     delete(at: indexSet)
                 })
-            }
-            .navigationDestination(for: Habit.self){ habit in
-                HabitDetailView(habits: habits, habit: habit)
             }
             .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
             .navigationTitle("Habit Tracker")
