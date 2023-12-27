@@ -19,7 +19,7 @@ struct Log: Codable, Hashable {
 
 @Observable
 class Habit: Identifiable, Hashable, Codable{
-    
+
     let id: UUID
     var name: String
     var logs: [Log]

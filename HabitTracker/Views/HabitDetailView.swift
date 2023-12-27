@@ -10,6 +10,7 @@ import SwiftUI
 struct HabitDetailView: View {
     
     @State private var logDescription = ""
+    @FocusState private var textFocused: Bool
     var habits: Habits
     var habit: Habit
     
@@ -25,17 +26,19 @@ struct HabitDetailView: View {
                         .foregroundStyle(habit.type == .Productive ? .green : .red)
                     TextField("Breif Description of entry", text: $logDescription)
                         .padding(.bottom)
+                        .focused($textFocused)
                 }
                 
                 Section{
                     HStack{
                         Spacer()
                         Button{
-                            
+                            textFocused.toggle()
                             withAnimation{
                                 habit.logs.insert(Log(date: Date(), description: logDescription), at: 0)
                             }
                             saveData()
+                            logDescription = ""
                         }label: {
                             Text("Log Habit")
                             Image(systemName: "plus")
