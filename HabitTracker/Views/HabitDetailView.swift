@@ -24,13 +24,16 @@ struct HabitDetailView: View {
             
             Form{
                 
-                Section{
+                Section {
                     
                     Text("This is a " + habit.type.rawValue.lowercased() + " habit")
                         .foregroundStyle(habit.type == .Productive ? .green : .red)
+                        .font(.headline)
                     
-                    TextField("Breif Description of entry", text: $logDescription)
-                        .padding(.bottom)
+                    Text("Total Frequency: \(habit.logs.count)")
+                        .font(.headline)
+                    
+                    TextField("Breif Description of entry", text: $logDescription, axis: .vertical)
                         .focused($textFocused)
                 }
                 
@@ -47,8 +50,7 @@ struct HabitDetailView: View {
                             saveData()
                             logDescription = ""
                         }label: {
-                            Text("Log Habit")
-                            Image(systemName: "plus")
+                            Text("Log Entry")
                         }
                         .padding(10)
                         .font(.title2)
@@ -59,13 +61,8 @@ struct HabitDetailView: View {
                 }
                 .disabled(logButtonDisabled)
                 
-                Section("total freqency"){
-                    Text("\(habit.logs.count)")
-                        .font(.headline)
-                }
-                
-                
                 Section("Habit Log"){
+                    
                     if habit.logs.isEmpty {
                         Text("No logs for this habit yet")
                     }
