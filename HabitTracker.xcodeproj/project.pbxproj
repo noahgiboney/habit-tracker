@@ -72,15 +72,15 @@
 		E2DEEB912B38BDE7000395A9 /* HabitTracker */ = {
 			isa = PBXGroup;
 			children = (
-				E283B67B2B38CC2F00FA847F /* Views */,
 				E2DEEB922B38BDE7000395A9 /* HabitTrackerApp.swift */,
+				E283B67B2B38CC2F00FA847F /* Views */,
 				E27C42F32B3AA9320015ADAC /* Extensions.swift */,
 				E2DEEB942B38BDE7000395A9 /* ContentView.swift */,
 				E283B67E2B38CC8300FA847F /* Habit.swift */,
 				E2DEEB962B38BDE7000395A9 /* Assets.xcassets */,
+				E283B6802B38D0FA00FA847F /* Colors.swift */,
 				E2F653752B3A68EC00AA7336 /* Modifiers.swift */,
 				E2DEEB982B38BDE7000395A9 /* Preview Content */,
-				E283B6802B38D0FA00FA847F /* Colors.swift */,
 			);
 			path = HabitTracker;
 			sourceTree = "<group>";

@@ -33,17 +33,25 @@ struct ContentView: View {
                     Spacer()
                 }
                 
-                ForEach(habits.userHabits){ habit in
-                    NavigationLink(habit.name){
-                        HabitDetailView(habits: habits, habit: habit)
-                    }
-                    .padding()
-                    .foregroundColor(habit.type == .Productive ? .green : .red)
+                if habits.userHabits.isEmpty {
                     
+                    Text("You currently have no saved habits, add a habit by clicking above")
+                        .font(.headline)
                 }
-                .onDelete(perform: { indexSet in
-                    delete(at: indexSet)
-                })
+                else{
+                    
+                    ForEach(habits.userHabits){ habit in
+                        NavigationLink(habit.name){
+                            HabitDetailView(habits: habits, habit: habit)
+                        }
+                        .padding()
+                        .foregroundColor(habit.type == .Productive ? .green : .red)
+                        
+                    }
+                    .onDelete(perform: { indexSet in
+                        delete(at: indexSet)
+                    })
+                }
             }
             .navigationTitle("Habit Tracker")
             .toolbar{

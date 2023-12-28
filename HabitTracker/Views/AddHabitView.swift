@@ -35,7 +35,6 @@ struct AddHabitView: View {
                 }
             }
             .navigationTitle("Add Habit")
-            .preferredColorScheme(.dark)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem(placement: .confirmationAction) {
