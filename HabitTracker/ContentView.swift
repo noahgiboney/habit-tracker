@@ -12,21 +12,39 @@ struct ContentView: View {
     @State private var showDeleteHabit = false
     @State private var habits = Habits()
     
+    let imageURL = URL(string: "https://practicalpie.com/wp-content/uploads/2019/02/habit.png")
+    
     var body: some View {
         NavigationStack{
+            
             List{
+                
+                HStack{
+                    Spacer()
+                    AsyncImage(url: imageURL) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                        
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                    Spacer()
+                }
+                
                 ForEach(habits.userHabits){ habit in
                     NavigationLink(habit.name){
                         HabitDetailView(habits: habits, habit: habit)
                     }
                     .padding()
                     .foregroundColor(habit.type == .Productive ? .green : .red)
+                    
                 }
                 .onDelete(perform: { indexSet in
                     delete(at: indexSet)
                 })
             }
-            .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
             .navigationTitle("Habit Tracker")
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){
@@ -35,7 +53,6 @@ struct ContentView: View {
                     }label: {
                         Text("Add")
                     }
-                    .toolBar()
                 }
                 ToolbarItem(placement: .topBarLeading){
                     EditButton()

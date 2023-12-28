@@ -67,7 +67,7 @@ struct HabitDetailView: View {
                             
                             VStack(alignment: .leading){
                                 
-                                Text("- " + log.description)
+                                Text(log.description)
                                     .padding(.vertical)
                       
                                 
@@ -78,7 +78,6 @@ struct HabitDetailView: View {
                     }
                 }
             }
-            .preferredColorScheme(.dark)
             .navigationTitle(habit.name)
         }
     }
