@@ -18,7 +18,7 @@ struct Log: Codable, Hashable {
 }
 
 @Observable
-class Habit: Identifiable, Hashable, Codable{
+class Habit: Identifiable, Codable{
 
     let id: UUID
     var name: String
@@ -30,18 +30,6 @@ class Habit: Identifiable, Hashable, Codable{
         self.type = type
         self.id = UUID()
         self.logs = []
-    }
-    
-    //these functions are required to conform to Hashable protocol
-    static func == (lhs: Habit, rhs: Habit) -> Bool {
-        return lhs.id == rhs.id
-    }
-    
-    func hash(into hasher: inout Hasher){
-        hasher.combine(id)
-        hasher.combine(logs)
-        hasher.combine(name)
-        hasher.combine(type)
     }
 }
 
