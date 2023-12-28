@@ -14,6 +14,7 @@ struct AddHabitView: View {
     
     @State private var habitName = ""
     @State private var habitType: HabitTypes = .Productive
+    @State private var habitLimit = 1
     
     var addButtonDisabled: Bool{
         return habitName.count == 0
@@ -26,16 +27,19 @@ struct AddHabitView: View {
             Form{
                 
                 Section{
+                    
                     TextField("Habit Name", text: $habitName)
                 }
                 
-                Section{
+                Section {
+                    
                     Picker("Habit Type", selection: $habitType){
                         ForEach(HabitTypes.allCases, id: \.self){ type in
                             Text(type.rawValue)
                         }
                     }
-                    .pickerStyle(.segmented)
+                    
+                    Stepper("Goal Frequency (Per Week):  \(habitLimit)", value: $habitLimit, in: 1...7)
                 }
             }
             .navigationTitle("Add Habit")
