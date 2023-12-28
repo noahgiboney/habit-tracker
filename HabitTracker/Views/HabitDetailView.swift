@@ -59,17 +59,20 @@ struct HabitDetailView: View {
                 
                 
                 Section("Habit Log"){
-                    
                     if habit.logs.isEmpty {
                         Text("No logs for this habit yet")
                     }
                     else{
                         ForEach(habit.logs, id: \.date){ log in
+                            
                             VStack(alignment: .leading){
+                                
+                                Text("- " + log.description)
+                                    .padding(.vertical)
+                      
+                                
                                 Text(log.date.formattedDate)
                                     .font(.caption)
-                                Text(log.description)
-                                    .padding()
                             }
                         }
                     }
