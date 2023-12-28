@@ -19,18 +19,25 @@ struct HabitDetailView: View {
     }
     
     var body: some View {
+        
         NavigationStack{
+            
             Form{
+                
                 Section{
+                    
                     Text("This is a " + habit.type.rawValue.lowercased() + " habit")
                         .foregroundStyle(habit.type == .Productive ? .green : .red)
+                    
                     TextField("Breif Description of entry", text: $logDescription)
                         .padding(.bottom)
                         .focused($textFocused)
                 }
                 
                 Section{
+                    
                     HStack{
+                        
                         Spacer()
                         Button{
                             textFocused.toggle()
