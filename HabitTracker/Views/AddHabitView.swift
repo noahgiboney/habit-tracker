@@ -12,17 +12,30 @@ struct AddHabitView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var name = ""
+    @State private var type = HabitType.Productive
     
     var body: some View {
+        
         NavigationStack{
+            
             Form{
+                
                 Section{
+                    
                     TextField("Habit Name", text: $name)
+                    
+                    Picker("Habit Type", selection: $type){
+                        ForEach(HabitType.allCases, id: \.self) {
+                            Text($0.rawValue)
+                        }
+                    }
+                    .pickerStyle(.segmented)
                 }
                 
                 Section{
+                    
                     Button("Save"){
-                        let newHabit = Habit(name: name)
+                        let newHabit = Habit(name: name, type: type)
                         context.insert(newHabit)
                         dismiss()
                     }

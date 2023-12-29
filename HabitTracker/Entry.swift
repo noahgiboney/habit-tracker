@@ -6,8 +6,15 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Entry: Codable, Hashable {
+@Model
+class Entry {
     var date: Date
-    var description: String
+    var note: String
+    
+    init(note: String) {
+        self.date = Date.now
+        self.note = note
+    }
 }

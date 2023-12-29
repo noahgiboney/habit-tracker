@@ -21,7 +21,7 @@ struct HabitDetailView: View {
     do{
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Habit.self, configurations: config)
-        let testHabit = Habit(name: "Gym")
+        let testHabit = Habit(name: "Gym", type: .Productive)
         
         return HabitDetailView(habit: testHabit)
                 .modelContainer(container)

@@ -11,12 +11,16 @@ import SwiftData
 @Model
 class Habit {
     var name: String
+    var type: HabitType
+    var log: [Entry]
     
-    init(name: String) {
+    init(name: String, type: HabitType) {
         self.name = name
+        self.type = type
+        self.log = [Entry]()
     }
 }
 
-enum HabitType: String, CaseIterable {
+enum HabitType: String, CaseIterable, Codable {
     case Productive, Destructive
 }
