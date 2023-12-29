@@ -7,27 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E27A73242B38D4DE0013AFEC /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27A73232B38D4DE0013AFEC /* AddHabitView.swift */; };
+		E2040F622B3E0B40004DCED2 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2040F612B3E0B40004DCED2 /* Entry.swift */; };
+		E24B7E682B3F532B0061C1A9 /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24B7E672B3F532B0061C1A9 /* AddHabitView.swift */; };
+		E24B7E6A2B3F54F40061C1A9 /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24B7E692B3F54F40061C1A9 /* HabitDetailView.swift */; };
 		E27C42F42B3AA9320015ADAC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27C42F32B3AA9320015ADAC /* Extensions.swift */; };
-		E283B67F2B38CC8300FA847F /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283B67E2B38CC8300FA847F /* Habit.swift */; };
 		E283B6812B38D0FA00FA847F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283B6802B38D0FA00FA847F /* Colors.swift */; };
-		E29BAAFC2B39080300C42612 /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29BAAFB2B39080300C42612 /* HabitDetailView.swift */; };
+		E2BCB20B2B3F4FFB00592082 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCB20A2B3F4FFB00592082 /* ContentView.swift */; };
+		E2BCB20D2B3F507D00592082 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCB20C2B3F507D00592082 /* Habit.swift */; };
 		E2DEEB932B38BDE7000395A9 /* HabitTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEEB922B38BDE7000395A9 /* HabitTrackerApp.swift */; };
-		E2DEEB952B38BDE7000395A9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEEB942B38BDE7000395A9 /* ContentView.swift */; };
 		E2DEEB972B38BDE7000395A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2DEEB962B38BDE7000395A9 /* Assets.xcassets */; };
 		E2DEEB9A2B38BDE7000395A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2DEEB992B38BDE7000395A9 /* Preview Assets.xcassets */; };
 		E2F653762B3A68EC00AA7336 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F653752B3A68EC00AA7336 /* Modifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E27A73232B38D4DE0013AFEC /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
+		E2040F612B3E0B40004DCED2 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		E24B7E672B3F532B0061C1A9 /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
+		E24B7E692B3F54F40061C1A9 /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
 		E27C42F32B3AA9320015ADAC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		E283B67E2B38CC8300FA847F /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		E283B6802B38D0FA00FA847F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		E29BAAFB2B39080300C42612 /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
+		E2BCB20A2B3F4FFB00592082 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E2BCB20C2B3F507D00592082 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		E2DEEB8F2B38BDE7000395A9 /* HabitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2DEEB922B38BDE7000395A9 /* HabitTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTrackerApp.swift; sourceTree = "<group>"; };
-		E2DEEB942B38BDE7000395A9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E2DEEB962B38BDE7000395A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2DEEB992B38BDE7000395A9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E2F653752B3A68EC00AA7336 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
@@ -47,8 +49,9 @@
 		E283B67B2B38CC2F00FA847F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E27A73232B38D4DE0013AFEC /* AddHabitView.swift */,
-				E29BAAFB2B39080300C42612 /* HabitDetailView.swift */,
+				E2BCB20A2B3F4FFB00592082 /* ContentView.swift */,
+				E24B7E672B3F532B0061C1A9 /* AddHabitView.swift */,
+				E24B7E692B3F54F40061C1A9 /* HabitDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -75,8 +78,8 @@
 				E2DEEB922B38BDE7000395A9 /* HabitTrackerApp.swift */,
 				E283B67B2B38CC2F00FA847F /* Views */,
 				E27C42F32B3AA9320015ADAC /* Extensions.swift */,
-				E2DEEB942B38BDE7000395A9 /* ContentView.swift */,
-				E283B67E2B38CC8300FA847F /* Habit.swift */,
+				E2BCB20C2B3F507D00592082 /* Habit.swift */,
+				E2040F612B3E0B40004DCED2 /* Entry.swift */,
 				E2DEEB962B38BDE7000395A9 /* Assets.xcassets */,
 				E283B6802B38D0FA00FA847F /* Colors.swift */,
 				E2F653752B3A68EC00AA7336 /* Modifiers.swift */,
@@ -164,13 +167,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E283B6812B38D0FA00FA847F /* Colors.swift in Sources */,
-				E2DEEB952B38BDE7000395A9 /* ContentView.swift in Sources */,
+				E2BCB20B2B3F4FFB00592082 /* ContentView.swift in Sources */,
+				E24B7E6A2B3F54F40061C1A9 /* HabitDetailView.swift in Sources */,
 				E2F653762B3A68EC00AA7336 /* Modifiers.swift in Sources */,
 				E27C42F42B3AA9320015ADAC /* Extensions.swift in Sources */,
-				E29BAAFC2B39080300C42612 /* HabitDetailView.swift in Sources */,
-				E283B67F2B38CC8300FA847F /* Habit.swift in Sources */,
+				E24B7E682B3F532B0061C1A9 /* AddHabitView.swift in Sources */,
+				E2040F622B3E0B40004DCED2 /* Entry.swift in Sources */,
+				E2BCB20D2B3F507D00592082 /* Habit.swift in Sources */,
 				E2DEEB932B38BDE7000395A9 /* HabitTrackerApp.swift in Sources */,
-				E27A73242B38D4DE0013AFEC /* AddHabitView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

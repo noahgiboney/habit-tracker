@@ -2,102 +2,30 @@
 //  HabitDetailView.swift
 //  HabitTracker
 //
-//  Created by Noah Giboney on 12/24/23.
+//  Created by Noah Giboney on 12/29/23.
 //
-
+import SwiftData
 import SwiftUI
 
 struct HabitDetailView: View {
     
-    @State private var logDescription = ""
-    @FocusState private var textFocused: Bool
-    var habits: Habits
-    var habit: Habit
-    
-    var logButtonDisabled: Bool{
-        return logDescription.count == 0
-    }
+    @Bindable var habit: Habit
     
     var body: some View {
-        
-        NavigationStack{
-            
-            Form{
-                
-                Section {
-                    
-                    Text("This is a " + habit.type.rawValue.lowercased() + " habit")
-                        .foregroundStyle(habit.type == .Productive ? .green : .red)
-                        .font(.headline)
-                    
-                    Text("Total Frequency: \(habit.logs.count)")
-                        .font(.headline)
-                    
-                    TextField("Breif Description of entry", text: $logDescription, axis: .vertical)
-                        .focused($textFocused)
-                }
-                
-                Section{
-                    
-                    HStack{
-                        
-                        Spacer()
-                        Button{
-                            textFocused.toggle()
-                            withAnimation{
-                                habit.logs.insert(Log(date: Date(), description: logDescription), at: 0)
-                            }
-                            saveData()
-                            logDescription = ""
-                        }label: {
-                            Text("Log Entry")
-                        }
-                        .padding(10)
-                        .font(.title2)
-                        .buttonStyle(.bordered)
-                        Spacer()
-                    }
-                    .listRowBackground(Color.white.opacity(0))
-                }
-                .disabled(logButtonDisabled)
-                
-                Section("Habit Log"){
-                    
-                    if habit.logs.isEmpty {
-                        Text("No logs for this habit yet")
-                    }
-                    else{
-                        ForEach(habit.logs, id: \.date){ log in
-                            
-                            VStack(alignment: .leading){
-                                
-                                Text(log.description)
-                                    .padding(.vertical)
-                      
-                                
-                                Text(log.date.formattedDate)
-                                    .font(.caption)
-                            }
-                        }
-                    }
-                }
-            }
-            .navigationTitle(habit.name)
-        }
-    }
-    
-    func saveData() {
-        if let index = habits.userHabits.firstIndex(where: {$0.id == habit.id}) {
-            habits.userHabits.remove(at: index) //remove habit based on id
-            
-            habits.userHabits.insert(habit, at: index) //insert habit to update user defaults
-        }
+        Text(habit.name)
     }
 }
 
-
 #Preview {
-
     
-    HabitDetailView(habits: Habits(), habit: Habit(name: "Gym", type: .Productive))
+    do{
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: Habit.self, configurations: config)
+        let testHabit = Habit(name: "Gym")
+        
+        return HabitDetailView(habit: testHabit)
+                .modelContainer(container)
+    }catch{
+        return Text("Failed to user swift data in preview")
+    }
 }

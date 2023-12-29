@@ -2,54 +2,21 @@
 //  Habit.swift
 //  HabitTracker
 //
-//  Created by Noah Giboney on 12/24/23.
+//  Created by Noah Giboney on 12/29/23.
 //
 
 import Foundation
-import Observation
+import SwiftData
 
-enum HabitTypes: String, CaseIterable, Codable{
-    case Productive, Destructive
-}
-
-struct Log: Codable, Hashable {
-    var date: Date
-    var description: String
-}
-
-@Observable
-class Habit: Identifiable, Codable{
-
-    let id: UUID
+@Model
+class Habit {
     var name: String
-    var logs: [Log]
-    var type: HabitTypes
     
-    init(name: String, type: HabitTypes) {
+    init(name: String) {
         self.name = name
-        self.type = type
-        self.id = UUID()
-        self.logs = []
     }
 }
 
-@Observable
-class Habits{
-    var userHabits: [Habit] {
-        didSet{
-            if let data = try? JSONEncoder().encode(userHabits){
-                UserDefaults.standard.set(data, forKey: "UserHabits")
-            }
-        }
-    }
-    
-    init(){
-        if let savedHabits = UserDefaults.standard.data(forKey: "UserHabits"){
-            if let decodedData = try? JSONDecoder().decode([Habit].self, from: savedHabits){
-                self.userHabits = decodedData
-                return
-            }
-        }
-        userHabits = []
-    }
+enum HabitType: String, CaseIterable {
+    case Productive, Destructive
 }

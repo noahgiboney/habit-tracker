@@ -2,67 +2,40 @@
 //  AddHabitView.swift
 //  HabitTracker
 //
-//  Created by Noah Giboney on 12/24/23.
+//  Created by Noah Giboney on 12/29/23.
 //
-
+import SwiftData
 import SwiftUI
 
 struct AddHabitView: View {
+    @Environment(\.modelContext) var context
     @Environment(\.dismiss) var dismiss
     
-    var habits: Habits
-    
-    @State private var habitName = ""
-    @State private var habitType: HabitTypes = .Productive
-    @State private var habitLimit = 1
-    
-    var addButtonDisabled: Bool{
-        return habitName.count == 0
-    }
+    @State private var name = ""
     
     var body: some View {
-        
         NavigationStack{
-            
             Form{
-                
                 Section{
-                    
-                    TextField("Habit Name", text: $habitName)
+                    TextField("Habit Name", text: $name)
                 }
                 
-                Section {
-                    
-                    Picker("Habit Type", selection: $habitType){
-                        ForEach(HabitTypes.allCases, id: \.self){ type in
-                            Text(type.rawValue)
-                        }
+                Section{
+                    Button("Save"){
+                        let newHabit = Habit(name: name)
+                        context.insert(newHabit)
+                        dismiss()
                     }
-                    
-                    Stepper("Goal Frequency (Per Week):  \(habitLimit)", value: $habitLimit, in: 1...7)
                 }
             }
             .navigationTitle("Add Habit")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
-                
-                ToolbarItem(placement: .confirmationAction) {
-                    
-                    Button("Done"){
-                        habits.userHabits.insert(Habit(name: habitName, type: habitType), at: 0)
-                        dismiss()
-                    }
-                    .disabled(addButtonDisabled)
-                    .toolBar()
-                }
-                
                 ToolbarItem(placement: .topBarLeading) {
-                    
-                    Button("Cancel", role: .destructive){
+                    Button("Cancel"){
                         dismiss()
                     }
-                    .toolBar(foreground: .red)
-                    
+                    .foregroundColor(.red)
                 }
             }
         }
@@ -70,5 +43,5 @@ struct AddHabitView: View {
 }
 
 #Preview {
-    AddHabitView(habits: Habits())
+    AddHabitView()
 }
