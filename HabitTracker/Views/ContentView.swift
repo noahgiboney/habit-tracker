@@ -19,8 +19,12 @@ struct ContentView: View {
             
             List{
                 ForEach(habits) { habit in
-                    NavigationLink(value: habit) {
-                        Text("test")
+                    
+                    NavigationLink{
+                        HabitDetailView(habit: habit)
+                    } label: {
+                        Text(habit.name)
+                            .foregroundStyle(habit.type == .Productive ? .green : .red)
                     }
                 }
                 .onDelete(perform: { indexSet in
@@ -31,9 +35,6 @@ struct ContentView: View {
             .sheet(isPresented: $showingAddSheet){
                 AddHabitView()
             }
-            .navigationDestination(for: Habit.self, destination: { habit in
-                HabitDetailView(habit: habit)
-            })
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Add", systemImage: "plus"){
