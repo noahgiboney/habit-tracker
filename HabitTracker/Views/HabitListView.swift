@@ -12,8 +12,12 @@ struct HabitListView: View {
     @Query var habits: [Habit]
     
     var body: some View {
-        List(habits){ habit in
-            Text(habit.name)
+        List{
+            ForEach(habits) { habit in
+                NavigationLink(habit.name) {
+                    HabitDetailView(habit: habit)
+                }
+            }
         }
     }
     

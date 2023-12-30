@@ -11,26 +11,14 @@ struct ContentView: View {
     @Environment(\.modelContext) var context
     @Query var habits: [Habit]
     
+    @State private var sortOrder = [SortDescriptor(\Habit.name)]
     @State private var showingAddSheet = false
     
     var body: some View {
         
         NavigationStack{
             
-            List{
-                ForEach(habits) { habit in
-                    
-                    NavigationLink{
-                        HabitDetailView(habit: habit)
-                    } label: {
-                        Text(habit.name)
-                            .foregroundStyle(habit.type == .Productive ? .green : .red)
-                    }
-                }
-                .onDelete(perform: { indexSet in
-                    delete(for: indexSet)
-                })
-            }
+            HabitListView(sortOrder: sortOrder)
             .navigationTitle("Habit Tracker")
             .sheet(isPresented: $showingAddSheet){
                 AddHabitView()
