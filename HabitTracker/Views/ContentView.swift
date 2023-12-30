@@ -44,6 +44,11 @@ struct ContentView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     EditButton()
                 }
+                ToolbarItem{
+                    Menu("Sort", systemImage: "arrow.up.arrow.down"){
+  
+                    }
+                }
             }
         }
     }

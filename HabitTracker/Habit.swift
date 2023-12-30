@@ -12,12 +12,10 @@ import SwiftData
 class Habit {
     var name: String
     var type: HabitType
-    var log: [Entry]
     
     init(name: String, type: HabitType) {
         self.name = name
         self.type = type
-        self.log = [Entry]()
     }
 }
 
