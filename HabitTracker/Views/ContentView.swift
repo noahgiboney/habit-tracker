@@ -13,15 +13,22 @@ struct ContentView: View {
     
     @State private var sortOrder = [SortDescriptor(\Habit.name)]
     @State private var showingAddSheet = false
+    @State private var habitDisplayType = "All"
     
     var body: some View {
         
         NavigationStack{
             
-            HabitListView(sortOrder: sortOrder)
-            .navigationTitle("Habit Tracker")
-            .sheet(isPresented: $showingAddSheet){
-                AddHabitView()
+            List{
+                Picker("Habit Selection", selection: $habitDisplayType){
+                    Text("All")
+                }
+                
+                HabitListView(sortOrder: sortOrder)
+                .navigationTitle("Habit Tracker")
+                .sheet(isPresented: $showingAddSheet){
+                    AddHabitView()
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
