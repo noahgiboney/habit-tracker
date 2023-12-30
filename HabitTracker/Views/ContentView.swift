@@ -13,6 +13,8 @@ struct ContentView: View {
     
     @State private var sortOrder = [SortDescriptor(\Habit.name)]
     @State private var showingAddSheet = false
+    
+    let habitDisplayOptions = ["All", "Productive", "Destructive" ]
     @State private var habitDisplayType = "All"
     
     var body: some View {
@@ -21,8 +23,12 @@ struct ContentView: View {
             
             List{
                 Picker("Habit Selection", selection: $habitDisplayType){
-                    Text("All")
+                    ForEach(habitDisplayOptions, id: \.self) { type in
+                        Text(type)
+                    }
                 }
+                .padding()
+                .pickerStyle(.segmented)
                 
                 HabitListView(sortOrder: sortOrder)
                 .navigationTitle("Habit Tracker")
