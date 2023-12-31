@@ -35,7 +35,7 @@ struct AddHabitView: View {
                 Section{
                     
                     Button("Save"){
-                        let newHabit = Habit(name: name, type: type)
+                        let newHabit = Habit(name: name, type: type, dateAdded: .now)
                         context.insert(newHabit)
                         dismiss()
                     }

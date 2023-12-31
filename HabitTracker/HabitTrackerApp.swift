@@ -10,10 +10,21 @@ import SwiftUI
 
 @main
 struct HabitTrackerApp: App {
+    
+    let container: ModelContainer
+    
+    init(){
+        do{
+            container = try ModelContainer(for: Habit.self)
+        }catch{
+            fatalError("Could not initialize ModelContainer")
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: Habit.self)
+        .modelContainer(container)
     }
 }

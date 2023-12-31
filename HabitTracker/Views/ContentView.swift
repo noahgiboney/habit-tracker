@@ -31,10 +31,10 @@ struct ContentView: View {
                 .pickerStyle(.segmented)
                 
                 HabitListView(sortOrder: sortOrder)
-                .navigationTitle("Habit Tracker")
-                .sheet(isPresented: $showingAddSheet){
-                    AddHabitView()
-                }
+            }
+            .navigationTitle("Habit Tracker")
+            .sheet(isPresented: $showingAddSheet){
+                AddHabitView()
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -45,9 +45,14 @@ struct ContentView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     EditButton()
                 }
-                ToolbarItem{
+                ToolbarItem(placement: .topBarLeading){
                     Menu("Sort", systemImage: "arrow.up.arrow.down"){
-  
+                        Picker("Sort Order", selection: $sortOrder){
+                            Text("Alphabetical")
+                                .tag([SortDescriptor(\Habit.name)])
+                            Text("Date Added")
+                                .tag([SortDescriptor(\Habit.dateAdded)])
+                        }
                     }
                 }
             }
