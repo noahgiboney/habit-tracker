@@ -16,6 +16,7 @@ struct HabitListView: View {
             NavigationLink(habit.name) {
                 HabitDetailView(habit: habit)
             }
+            .foregroundStyle(habit.type == "Productive" ? .green : .orange)
         }
     }
     
