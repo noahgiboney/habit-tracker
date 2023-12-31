@@ -19,12 +19,23 @@ struct HabitListView: View {
         }
     }
     
-    init(sortOrder: [SortDescriptor<Habit>]){
-        _habits = Query(sort: sortOrder, animation: .bouncy)
+    init(filter: String, sortOrder: [SortDescriptor<Habit>]){
+        _habits = Query( filter: #Predicate<Habit> { habit in
+            if filter == "All" {
+                return true
+            }
+           else if habit.type == filter {
+                return true
+            }
+            else{
+                return false
+            }
+        }
+            ,sort: sortOrder, animation: .bouncy)
     }
 }
 
 #Preview {
-    HabitListView(/*filter: "Productive,"*/ sortOrder: [SortDescriptor(\Habit.name)])
+    HabitListView(filter: "Productive", sortOrder: [SortDescriptor(\Habit.name)])
         .modelContainer(for: Habit.self)
 }

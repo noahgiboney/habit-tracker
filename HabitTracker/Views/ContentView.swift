@@ -30,7 +30,7 @@ struct ContentView: View {
                 .padding()
                 .pickerStyle(.segmented)
                 
-                HabitListView(/*filter: habitDisplayType,*/ sortOrder: sortOrder)
+                HabitListView(filter: habitDisplayType, sortOrder: sortOrder)
             }
             .navigationTitle("Habit Tracker")
             .sheet(isPresented: $showingAddSheet){
