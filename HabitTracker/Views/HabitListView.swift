@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HabitListView: View {
     
+    @Environment(\.modelContext) var context
     @Query var habits: [Habit]
     
     var body: some View {
@@ -16,8 +17,14 @@ struct HabitListView: View {
             NavigationLink(habit.name) {
                 HabitDetailView(habit: habit)
             }
-            .foregroundStyle(habit.type == "Productive" ? .green : .orange)
+            .foregroundStyle(habit.type == "Productive" ? .green : .red)
         }
+        .onDelete(perform: { indexSet in
+            for i in indexSet{
+                let habit = habits[i]
+                context.delete(habit)
+            }
+        })
     }
     
     init(filter: String, sortOrder: [SortDescriptor<Habit>]){
@@ -25,14 +32,13 @@ struct HabitListView: View {
             if filter == "All" {
                 return true
             }
-           else if habit.type == filter {
+            else if habit.type == filter {
                 return true
             }
             else{
                 return false
             }
-        }
-            ,sort: sortOrder, animation: .bouncy)
+        }, sort: sortOrder)
     }
 }
 

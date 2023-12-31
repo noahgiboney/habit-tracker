@@ -15,7 +15,7 @@ struct ContentView: View {
     
     let typeOptions = ["All", "Productive", "Destructive" ]
     @State private var habitDisplayType = "All"
-    @State private var sortOrder = [SortDescriptor(\Habit.dateAdded)]
+    @State private var sortOrder = [SortDescriptor(\Habit.dateAdded, order: .reverse)]
     
     var body: some View {
         
@@ -49,7 +49,7 @@ struct ContentView: View {
                     Menu("Sort", systemImage: "arrow.up.arrow.down"){
                         Picker("Sort Order", selection: $sortOrder){
                             Text("Date Added")
-                                .tag([SortDescriptor(\Habit.dateAdded)])
+                                .tag([SortDescriptor(\Habit.dateAdded, order: .reverse)])
                             Text("Alphabetical")
                                 .tag([SortDescriptor(\Habit.name)])
                         }
