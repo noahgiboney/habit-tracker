@@ -25,6 +25,6 @@ struct HabitListView: View {
 }
 
 #Preview {
-    HabitListView(sortOrder: [SortDescriptor(\Habit.name)])
+    HabitListView(/*filter: "Productive,"*/ sortOrder: [SortDescriptor(\Habit.name)])
         .modelContainer(for: Habit.self)
 }

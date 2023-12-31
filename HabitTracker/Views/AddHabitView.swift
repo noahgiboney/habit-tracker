@@ -12,7 +12,7 @@ struct AddHabitView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var name = ""
-    @State private var type = HabitType.Productive
+    @State private var type = Habit.habitTypes[0]
     
     var body: some View {
         
@@ -25,8 +25,8 @@ struct AddHabitView: View {
                     TextField("Habit Name", text: $name)
                     
                     Picker("Habit Type", selection: $type){
-                        ForEach(HabitType.allCases, id: \.self) {
-                            Text($0.rawValue)
+                        ForEach(Habit.habitTypes, id: \.self) {
+                            Text($0)
                         }
                     }
                     .pickerStyle(.segmented)

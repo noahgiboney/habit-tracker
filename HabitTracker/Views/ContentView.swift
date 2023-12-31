@@ -11,11 +11,11 @@ struct ContentView: View {
     @Environment(\.modelContext) var context
     @Query var habits: [Habit]
     
-    @State private var sortOrder = [SortDescriptor(\Habit.dateAdded)]
     @State private var showingAddSheet = false
     
     let typeOptions = ["All", "Productive", "Destructive" ]
     @State private var habitDisplayType = "All"
+    @State private var sortOrder = [SortDescriptor(\Habit.dateAdded)]
     
     var body: some View {
         
@@ -30,7 +30,7 @@ struct ContentView: View {
                 .padding()
                 .pickerStyle(.segmented)
                 
-                HabitListView(sortOrder: sortOrder)
+                HabitListView(/*filter: habitDisplayType,*/ sortOrder: sortOrder)
             }
             .navigationTitle("Habit Tracker")
             .sheet(isPresented: $showingAddSheet){
