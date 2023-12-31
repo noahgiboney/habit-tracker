@@ -22,13 +22,13 @@ struct ContentView: View {
         NavigationStack{
             
             List{
-                Picker("Habit Selection", selection: $habitDisplayType){
+                Picker("Displaying", selection: $habitDisplayType){
                     ForEach(typeOptions, id: \.self) { type in
                         Text(type)
                     }
                 }
-                .padding()
-                .pickerStyle(.segmented)
+                .font(.headline)
+                .padding(.bottom)
                 
                 HabitListView(filter: habitDisplayType, sortOrder: sortOrder)
             }
@@ -41,9 +41,6 @@ struct ContentView: View {
                     Button("Add", systemImage: "plus"){
                         showingAddSheet.toggle()
                     }
-                }
-                ToolbarItem(placement: .topBarLeading) {
-                    EditButton()
                 }
                 ToolbarItem(placement: .topBarLeading){
                     Menu("Sort", systemImage: "arrow.up.arrow.down"){

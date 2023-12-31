@@ -15,12 +15,14 @@ class Habit {
     
     var name: String
     var type: String
-    var dateAdded: Date
+    var dateAdded = Date()
+    @Relationship(deleteRule: .cascade) var log = [Entry]()
     
-    init(name: String, type: String, dateAdded: Date ) {
+    init(name: String, type: String, dateAdded: Date = Date(), log: [Entry] = [Entry]()) {
         self.name = name
         self.type = type
         self.dateAdded = dateAdded
+        self.log = log
     }
 }
 

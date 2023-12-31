@@ -2,19 +2,20 @@
 //  Entry.swift
 //  HabitTracker
 //
-//  Created by Noah Giboney on 12/28/23.
+//  Created by Noah Giboney on 12/31/23.
 //
-
-import Foundation
 import SwiftData
+import Foundation
 
 @Model
 class Entry {
-    var date: Date
     var note: String
+    var date = Date()
+    var owner: Habit?
     
-    init(note: String) {
-        self.date = Date.now
+    init(note: String, date: Date = Date(), owner: Habit? = nil) {
         self.note = note
+        self.date = date
+        self.owner = owner
     }
 }
