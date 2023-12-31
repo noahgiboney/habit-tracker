@@ -11,10 +11,10 @@ struct ContentView: View {
     @Environment(\.modelContext) var context
     @Query var habits: [Habit]
     
-    @State private var sortOrder = [SortDescriptor(\Habit.name)]
+    @State private var sortOrder = [SortDescriptor(\Habit.dateAdded)]
     @State private var showingAddSheet = false
     
-    let habitDisplayOptions = ["All", "Productive", "Destructive" ]
+    let typeOptions = ["All", "Productive", "Destructive" ]
     @State private var habitDisplayType = "All"
     
     var body: some View {
@@ -23,7 +23,7 @@ struct ContentView: View {
             
             List{
                 Picker("Habit Selection", selection: $habitDisplayType){
-                    ForEach(habitDisplayOptions, id: \.self) { type in
+                    ForEach(typeOptions, id: \.self) { type in
                         Text(type)
                     }
                 }
@@ -48,10 +48,10 @@ struct ContentView: View {
                 ToolbarItem(placement: .topBarLeading){
                     Menu("Sort", systemImage: "arrow.up.arrow.down"){
                         Picker("Sort Order", selection: $sortOrder){
-                            Text("Alphabetical")
-                                .tag([SortDescriptor(\Habit.name)])
                             Text("Date Added")
                                 .tag([SortDescriptor(\Habit.dateAdded)])
+                            Text("Alphabetical")
+                                .tag([SortDescriptor(\Habit.name)])
                         }
                     }
                 }

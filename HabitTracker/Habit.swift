@@ -10,6 +10,7 @@ import SwiftData
 
 @Model
 class Habit {
+    
     var name: String
     var type: HabitType
     var dateAdded: Date
