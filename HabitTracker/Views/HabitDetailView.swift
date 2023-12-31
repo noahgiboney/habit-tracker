@@ -14,8 +14,24 @@ struct HabitDetailView: View {
     
     var body: some View {
         NavigationStack {
-            List{
-                
+            ScrollView{
+                VStack{
+                    TextField("Entry Note", text: $note, axis: .vertical)
+                        .textFieldStyle(.roundedBorder)
+                    
+                    Button("Add Entry"){
+                        let newEntry = Entry(note: note)
+                        habit.log.append(newEntry)
+                    }
+                    .buttonStyle(.bordered)
+                    
+                    Rectangle()
+                        .frame(height: 2)
+                        .padding(.vertical)
+                    
+                    Text("\(habit.log.count)")
+                }
+                .padding()
             }
             .navigationTitle(habit.name)
             .navigationBarTitleDisplayMode(.inline)

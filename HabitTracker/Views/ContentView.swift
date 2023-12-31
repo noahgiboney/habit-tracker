@@ -47,7 +47,7 @@ struct ContentView: View {
                         Picker("Sort Order", selection: $sortOrder){
                             Text("Date Added")
                                 .tag([SortDescriptor(\Habit.dateAdded, order: .reverse)])
-                            Text("Alphabetical")
+                            Text("Name")
                                 .tag([SortDescriptor(\Habit.name)])
                         }
                     }
