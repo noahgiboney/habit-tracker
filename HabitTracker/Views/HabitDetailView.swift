@@ -12,6 +12,10 @@ struct HabitDetailView: View {
     var habit: Habit
     @State private var note = ""
     
+    var validEntry: Bool {
+        note.isEmpty
+    }
+    
     var body: some View {
         
         NavigationStack {
@@ -26,6 +30,7 @@ struct HabitDetailView: View {
                             habit.log.insert(newEntry, at: 0)
                             note = ""
                         }
+                        .disabled(validEntry)
                         .padding(.top)
                         .buttonStyle(.bordered)
                     }
@@ -62,7 +67,7 @@ struct HabitDetailView: View {
                                 }
                             }
                         }
-                        .padding(.leading)
+                        .padding(10)
                     }
                     
                     Rectangle()
