@@ -17,23 +17,27 @@ struct HabitDetailView: View {
         NavigationStack {
             ScrollView{
                 VStack(alignment: .leading){
-                    TextField("Entry Note", text: $note, axis: .vertical)
-                        .textFieldStyle(.roundedBorder)
-                    
-                    Button("Add Entry"){
-                        let newEntry = Entry(note: note)
-                        habit.log.insert(newEntry, at: 0)
-                        note = ""
+                    VStack{
+                        TextField("Entry Note", text: $note, axis: .vertical)
+                            .textFieldStyle(.roundedBorder)
+                        
+                        Button("Add Entry"){
+                            let newEntry = Entry(note: note)
+                            habit.log.insert(newEntry, at: 0)
+                            note = ""
+                        }
+                        .padding(.top)
+                        .buttonStyle(.bordered)
                     }
-                    .padding(.vertical)
-                    .buttonStyle(.bordered)
+                    .padding()
                     
                     Rectangle()
                         .frame(height: 2)
-                        .padding(.vertical)
+                        .padding()
                     
                     Text("Your Log")
                         .font(.title)
+                        .padding(.leading)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack{
@@ -58,13 +62,13 @@ struct HabitDetailView: View {
                                 }
                             }
                         }
+                        .frame(width: .infinity)
                     }
                     
                     Rectangle()
                         .frame(height: 2)
-                        .padding(.vertical)
+                        .padding()
                 }
-                .padding()
             }
             .navigationTitle(habit.name)
             .navigationBarTitleDisplayMode(.inline)
