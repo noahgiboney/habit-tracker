@@ -13,6 +13,7 @@ struct HabitDetailView: View {
     @State private var note = ""
     
     var body: some View {
+        
         NavigationStack {
             ScrollView{
                 VStack{
@@ -21,7 +22,12 @@ struct HabitDetailView: View {
                     
                     Button("Add Entry"){
                         let newEntry = Entry(note: note)
-                        habit.log.append(newEntry)
+                        habit.log.insert(newEntry, at: 0)
+                        note = ""
+                        for i in habit.log {
+                            print(i.note + " ", terminator: " ")
+                        }
+                        print()
                     }
                     .buttonStyle(.bordered)
                     
@@ -29,17 +35,23 @@ struct HabitDetailView: View {
                         .frame(height: 2)
                         .padding(.vertical)
                     
-                    Text("\(habit.log.count)")
+                    ForEach(habit.log, id: \.self){ entry in
+                        Text(entry.note)
+                    }
                 }
                 .padding()
             }
+            .onAppear(perform: sortLog)
             .navigationTitle(habit.name)
             .navigationBarTitleDisplayMode(.inline)
         }
     }
+    func sortLog(){
+        habit.log.sort { entry1, entry2 in
+            entry1.date > entry2.date
+        }
+    }
 }
-
-
 
 #Preview {
     
