@@ -62,7 +62,7 @@ struct HabitDetailView: View {
                                 }
                             }
                         }
-                        .frame(width: .infinity)
+                        .padding(.leading)
                     }
                     
                     Rectangle()
