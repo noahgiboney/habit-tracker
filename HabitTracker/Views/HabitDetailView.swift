@@ -16,7 +16,7 @@ struct HabitDetailView: View {
         
         NavigationStack {
             ScrollView{
-                VStack{
+                VStack(alignment: .leading){
                     TextField("Entry Note", text: $note, axis: .vertical)
                         .textFieldStyle(.roundedBorder)
                     
@@ -24,31 +24,47 @@ struct HabitDetailView: View {
                         let newEntry = Entry(note: note)
                         habit.log.insert(newEntry, at: 0)
                         note = ""
-                        for i in habit.log {
-                            print(i.note + " ", terminator: " ")
-                        }
-                        print()
                     }
+                    .padding(.vertical)
                     .buttonStyle(.bordered)
                     
                     Rectangle()
                         .frame(height: 2)
                         .padding(.vertical)
                     
-                    ForEach(habit.log, id: \.self){ entry in
-                        Text(entry.note)
+                    Text("Your Log")
+                        .font(.title)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack{
+                            ForEach(habit.log, id: \.self){ entry in
+                                VStack(alignment: .leading){
+                                    Spacer()
+                                    Text(entry.note)
+                                    Spacer()
+                                    Spacer()
+                                    Text("\(entry.date.formattedDate)")
+                                        .font(.caption)
+                                    Spacer()
+                                }
+                                .frame(width: 150, height: 125)
+                                .background(.ultraThinMaterial)
+                                .shadow(radius: 3)
+                            }
+                            NavigationLink("View All"){
+                                
+                            }
+                        }
                     }
+                    
+                    Rectangle()
+                        .frame(height: 2)
+                        .padding(.vertical)
                 }
                 .padding()
             }
-            .onAppear(perform: sortLog)
             .navigationTitle(habit.name)
             .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-    func sortLog(){
-        habit.log.sort { entry1, entry2 in
-            entry1.date > entry2.date
         }
     }
 }
@@ -59,7 +75,10 @@ struct HabitDetailView: View {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Habit.self, configurations: config)
         let testHabit = Habit(name: "Gym", type: "Productive")
-//        testHabit.log.append(Entry(note: "Testing a note"))
+        testHabit.log.append(Entry(note: "Testing a "))
+        testHabit.log.append(Entry(note: "Testing a note"))
+        testHabit.log.append(Entry(note: "Testing a note"))
+        
         
         return HabitDetailView(habit: testHabit)
             .modelContainer(container)

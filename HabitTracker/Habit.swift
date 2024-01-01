@@ -24,12 +24,5 @@ class Habit {
         self.dateAdded = dateAdded
         self.log = log
     }
-    
-    func sortLog() {
-        let sortedLog = log.sorted { entry1, entry2 in 
-            return entry2.date > entry1.date
-        }
-        log = sortedLog
-    }
 }
 
