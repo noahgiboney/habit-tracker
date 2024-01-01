@@ -37,7 +37,8 @@ struct HabitDetailView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack{
-                            ForEach(habit.log, id: \.self){ entry in
+                            ForEach(habit.log, id: \.self) { entry in
+                                
                                 VStack(alignment: .leading){
                                     Spacer()
                                     Text(entry.note)
@@ -51,8 +52,10 @@ struct HabitDetailView: View {
                                 .background(.ultraThinMaterial)
                                 .shadow(radius: 3)
                             }
-                            NavigationLink("View All"){
-                                
+                            if habit.log.count >= 4 {
+                                NavigationLink("View All"){
+                                    LogListView(habit: habit)
+                                }
                             }
                         }
                     }
@@ -76,6 +79,7 @@ struct HabitDetailView: View {
         let container = try ModelContainer(for: Habit.self, configurations: config)
         let testHabit = Habit(name: "Gym", type: "Productive")
         testHabit.log.append(Entry(note: "Testing a "))
+        testHabit.log.append(Entry(note: "Testing a note"))
         testHabit.log.append(Entry(note: "Testing a note"))
         testHabit.log.append(Entry(note: "Testing a note"))
         
