@@ -28,9 +28,13 @@ struct ContentView: View {
                     }
                 }
                 .font(.headline)
-                .padding(.bottom)
                 
-                HabitListView(filter: habitDisplayType, sortOrder: sortOrder)
+                if habits.isEmpty {
+                    Text("No active habits")
+                }
+                else{
+                    HabitListView(filter: habitDisplayType, sortOrder: sortOrder)
+                }
             }
             .navigationTitle("Habit Tracker")
             .sheet(isPresented: $showingAddSheet){

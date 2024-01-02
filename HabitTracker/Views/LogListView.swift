@@ -13,13 +13,18 @@ struct LogListView: View {
     
     var body: some View {
         NavigationStack{
-            List(habit.log, id: \.self) { entry in
-                HStack{
-                    Text(entry.note)
-                    Spacer()
-                    Text("\(entry.date.formattedDate)")
-                        .font(.caption)
+            List {
+                ForEach(habit.log, id: \.self) { entry in
+                    HStack{
+                        Text(entry.note)
+                        Spacer()
+                        Text("\(entry.date.formattedDate)")
+                            .font(.caption)
+                    }
                 }
+                .onDelete(perform: { indexSet in
+                    deleteEntry(at: indexSet)
+                })
             }
             .navigationTitle(habit.name + " Entry Log")
             .toolbar{
@@ -28,6 +33,10 @@ struct LogListView: View {
                 }
             }
         }
+    }
+    
+    func deleteEntry(at offset: IndexSet){
+        habit.log.remove(atOffsets: offset)
     }
 }
 

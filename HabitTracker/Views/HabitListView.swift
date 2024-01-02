@@ -14,10 +14,19 @@ struct HabitListView: View {
     
     var body: some View {
         ForEach(habits) { habit in
-            NavigationLink(habit.name) {
+            NavigationLink {
                 HabitDetailView(habit: habit)
+            }label: {
+                VStack(alignment: .leading){
+                    Spacer()
+                    Text(habit.name)
+                        .foregroundStyle(habit.type == "Productive" ? .green : .red)
+                        .font(.title2)
+                    Spacer()
+                    Text("Since \(habit.dateAdded.formattedDate)")
+                        .font(.caption)
+                }
             }
-            .foregroundStyle(habit.type == "Productive" ? .green : .red)
         }
         .onDelete(perform: { indexSet in
             for i in indexSet{

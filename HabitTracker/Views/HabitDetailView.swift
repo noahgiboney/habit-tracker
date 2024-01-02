@@ -47,9 +47,8 @@ struct HabitDetailView: View {
                     }
                     .padding()
                     
-                    Rectangle()
-                        .frame(height: 2)
-                        .padding()
+                    Divider()
+                        .padding(.horizontal)
                     
                     Text("Your Log")
                         .font(.title)
