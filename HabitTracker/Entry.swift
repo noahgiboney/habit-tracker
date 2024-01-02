@@ -9,5 +9,5 @@ import Foundation
 
 struct Entry : Codable, Hashable{
     var note: String
-    var date = Date()
+    var date: Date
 }

@@ -12,6 +12,7 @@ struct AddEntryView: View {
     var habit: Habit
     @Environment(\.dismiss) var dismiss
     @State private var note = ""
+    @State private var date = Date()
     @FocusState private var entryKeyFocused: Bool
     
     var validEntry: Bool {
@@ -21,11 +22,15 @@ struct AddEntryView: View {
     var body: some View {
         NavigationStack{
             Form{
-                TextField("Entry Note", text: $note, axis: .vertical)
-                    .focused($entryKeyFocused)
+                Section("Entry Details"){
+                    TextField("Entry Note", text: $note, axis: .vertical)
+                        .focused($entryKeyFocused)
+                    
+                    DatePicker("When?", selection: $date, in: ...Date())
+                }
                 
                 Button("Add"){
-                    habit.log.insert(Entry(note: note), at: 0)
+                    habit.log.insert(Entry(note: note, date: date), at: 0)
                     entryKeyFocused.toggle()
                     note = ""
                     dismiss()

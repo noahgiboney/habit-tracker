@@ -61,7 +61,7 @@ struct HabitDetailView: View {
                                         Text(entry.note)
                                         Spacer()
                                         Spacer()
-                                        Text("\(entry.date.monthDate)")
+                                        Text("\(entry.date.monthDateTime)")
                                             .font(.caption)
                                         Spacer()
                                     }
@@ -120,10 +120,10 @@ struct HabitDetailView: View {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Habit.self, configurations: config)
         let testHabit = Habit(name: "Gym", type: "Productive")
-        testHabit.log.append(Entry(note: "Testing a "))
-        testHabit.log.append(Entry(note: "Testing a note"))
-        testHabit.log.append(Entry(note: "Testing a note"))
-        testHabit.log.append(Entry(note: "Testing a note"))
+        testHabit.log.append(Entry(note: "Testing a ", date: .now))
+        testHabit.log.append(Entry(note: "Testing a note", date: .now))
+        testHabit.log.append(Entry(note: "Testing a note", date: .now))
+        testHabit.log.append(Entry(note: "Testing a note", date: .now))
         
         
         return HabitDetailView(habit: testHabit)
