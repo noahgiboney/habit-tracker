@@ -23,6 +23,10 @@ class Habit {
         self.log = log
     }
     
+    func firstFour() -> [Entry]{
+        return Array(log.prefix(upTo: 4))
+    }
+    
     static let habitTypes = ["Productive", "Destructive"]
     
     static func validTextInput(input: String) -> Bool {

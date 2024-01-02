@@ -17,6 +17,8 @@ struct HabitDetailView: View {
     @State private var showingAddEntrySheet = false
     @State private var showingConfirmation = false
     @State private var showingDeleteAlert = false
+    
+    @State private var testDate = Date()
 
     var body: some View {
         
@@ -54,7 +56,7 @@ struct HabitDetailView: View {
                     else{
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack{
-                                ForEach(habit.log, id: \.self) { entry in
+                                ForEach(habit.firstFour(), id: \.self) { entry in
                                     
                                     VStack(alignment: .leading){
                                         Spacer()
@@ -70,14 +72,20 @@ struct HabitDetailView: View {
                                     .cornerRadius(10)
                                     .shadow(radius: 3)
                                 }
-                                if habit.log.count >= 4 {
-                                    NavigationLink("View All"){
-                                        LogListView(habit: habit)
-                                    }
+                                NavigationLink("View All"){
+                                    LogListView(habit: habit)
                                 }
                             }
                             .padding(10)
                         }
+                    
+                        Divider()
+                            .padding(.horizontal)
+                        
+                        Text("Activity")
+                            .font(.title)
+                            .padding(.leading)
+                            
                     }
                 }
             }
