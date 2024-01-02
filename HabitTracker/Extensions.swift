@@ -8,7 +8,11 @@
 import Foundation
 
 extension Date{
-    var formattedDate: String {
+    var monthDate: String {
+        self.formatted(date: .abbreviated, time: .omitted)
+    }
+    
+    var monthDateTime: String{
         self.formatted(date: .abbreviated, time: .shortened)
     }
 }

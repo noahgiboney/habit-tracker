@@ -18,7 +18,7 @@ struct LogListView: View {
                     HStack{
                         Text(entry.note)
                         Spacer()
-                        Text("\(entry.date.formattedDate)")
+                        Text(entry.date.monthDateTime)
                             .font(.caption)
                     }
                 }

@@ -8,11 +8,43 @@
 import SwiftUI
 
 struct AddEntryView: View {
+    
+    var habit: Habit
+    @Environment(\.dismiss) var dismiss
+    @State private var note = ""
+    @FocusState private var entryKeyFocused: Bool
+    
+    var validEntry: Bool {
+        note.isEmpty
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            Form{
+                TextField("Entry Note", text: $note, axis: .vertical)
+                    .focused($entryKeyFocused)
+                
+                Button("Add"){
+                    habit.log.insert(Entry(note: note), at: 0)
+                    entryKeyFocused.toggle()
+                    note = ""
+                    dismiss()
+                }
+                .disabled(validEntry)
+            }
+            .navigationTitle("New Entry")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading){
+                    Button("Cancel", role: .cancel){
+                        dismiss()
+                    }
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    AddEntryView()
+    AddEntryView(habit: Habit(name: "Gym", type: "Productive"))
 }

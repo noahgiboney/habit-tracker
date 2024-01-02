@@ -14,41 +14,22 @@ struct HabitDetailView: View {
     @Environment(\.modelContext) var context
     @Environment(\.dismiss) var dismiss
     
-    @State private var note = ""
+    @State private var showingAddEntrySheet = false
     @State private var showingConfirmation = false
     @State private var showingDeleteAlert = false
-    
-    @FocusState private var entryKeyFocused: Bool
-    
-    var validEntry: Bool {
-        note.isEmpty
-    }
-    
+
     var body: some View {
         
         NavigationStack {
             ScrollView{
                 VStack(alignment: .leading){
-                    VStack(alignment: .leading){
+                    VStack(alignment: .leading, spacing: 20){
                         
                         Text("\(habit.type) habit \(habit.type == "Productive" ? "🤩" : "👎")")
-                            .padding(.bottom)
                             .font(.headline)
                         
-                        TextField("Entry Note", text: $note, axis: .vertical)
-                            .textFieldStyle(.roundedBorder)
-                            .focused($entryKeyFocused)
-                        
-                        Button("Add Entry"){
-                            let newEntry = Entry(note: note)
-                            habit.log.insert(newEntry, at: 0)
-                            entryKeyFocused.toggle()
-                            note = ""
-
-                        }
-                        .disabled(validEntry)
-                        .padding(.top)
-                        .buttonStyle(.bordered)
+                        Text("Added \(habit.dateAdded.monthDateTime)")
+                            .font(.caption)
                     }
                     .padding()
                     
@@ -58,6 +39,14 @@ struct HabitDetailView: View {
                     Text("Your Log")
                         .font(.title)
                         .padding(.leading)
+                    
+                  
+                    Button("New Entry"){
+                        showingAddEntrySheet.toggle()
+                    }
+                    .buttonStyle(.bordered)
+                    .padding(.leading)
+                    
                     
                     if habit.log.isEmpty {
                         ContentUnavailableView("No Entrys", systemImage: "pencil")
@@ -72,12 +61,13 @@ struct HabitDetailView: View {
                                         Text(entry.note)
                                         Spacer()
                                         Spacer()
-                                        Text("\(entry.date.formattedDate)")
+                                        Text("\(entry.date.monthDate)")
                                             .font(.caption)
                                         Spacer()
                                     }
                                     .frame(width: 150, height: 125)
                                     .background(.ultraThinMaterial)
+                                    .cornerRadius(10)
                                     .shadow(radius: 3)
                                 }
                                 if habit.log.count >= 4 {
@@ -92,8 +82,11 @@ struct HabitDetailView: View {
                 }
             }
             .navigationTitle(habit.name)
+            .sheet(isPresented: $showingAddEntrySheet) {
+                AddEntryView(habit: habit)
+            }
             .toolbar{
-                ToolbarItem{
+                ToolbarItem(placement: .topBarTrailing){
                     Button("Edit"){
                         showingConfirmation.toggle()
                     }
@@ -105,7 +98,7 @@ struct HabitDetailView: View {
                     Button("Edit Habit"){}
                 }
                 
-                Button("Delete" , role: .destructive) {
+                Button("Delete Habit" , role: .destructive) {
                     showingDeleteAlert.toggle()
                 }
             }
@@ -127,10 +120,10 @@ struct HabitDetailView: View {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Habit.self, configurations: config)
         let testHabit = Habit(name: "Gym", type: "Productive")
-//        testHabit.log.append(Entry(note: "Testing a "))
-//        testHabit.log.append(Entry(note: "Testing a note"))
-//        testHabit.log.append(Entry(note: "Testing a note"))
-//        testHabit.log.append(Entry(note: "Testing a note"))
+        testHabit.log.append(Entry(note: "Testing a "))
+        testHabit.log.append(Entry(note: "Testing a note"))
+        testHabit.log.append(Entry(note: "Testing a note"))
+        testHabit.log.append(Entry(note: "Testing a note"))
         
         
         return HabitDetailView(habit: testHabit)

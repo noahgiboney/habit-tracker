@@ -23,7 +23,7 @@ struct HabitListView: View {
                         .foregroundStyle(habit.type == "Productive" ? .green : .red)
                         .font(.title2)
                     Spacer()
-                    Text("Since \(habit.dateAdded.formattedDate)")
+                    Text("Since \(habit.dateAdded.monthDate)")
                         .font(.caption)
                 }
             }
