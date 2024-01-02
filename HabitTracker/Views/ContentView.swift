@@ -22,17 +22,19 @@ struct ContentView: View {
         NavigationStack{
             
             List{
-                Picker("Displaying", selection: $habitDisplayType){
-                    ForEach(typeOptions, id: \.self) { type in
-                        Text(type)
-                    }
-                }
-                .font(.headline)
                 
                 if habits.isEmpty {
-                    Text("No active habits")
+                    ContentUnavailableView("No Habits", systemImage: "book", description: Text("You don't have any habits yet"))
                 }
                 else{
+                    
+                    Picker("Displaying", selection: $habitDisplayType){
+                        ForEach(typeOptions, id: \.self) { type in
+                            Text(type)
+                        }
+                    }
+                    .font(.headline)
+                    
                     HabitListView(filter: habitDisplayType, sortOrder: sortOrder)
                 }
             }

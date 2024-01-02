@@ -54,32 +54,36 @@ struct HabitDetailView: View {
                         .font(.title)
                         .padding(.leading)
                     
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack{
-                            ForEach(habit.log, id: \.self) { entry in
-                                
-                                VStack(alignment: .leading){
-                                    Spacer()
-                                    Text(entry.note)
-                                    Spacer()
-                                    Spacer()
-                                    Text("\(entry.date.formattedDate)")
-                                        .font(.caption)
-                                    Spacer()
-                                }
-                                .frame(width: 150, height: 125)
-                                .background(.ultraThinMaterial)
-                                .shadow(radius: 3)
-                            }
-                            if habit.log.count >= 4 {
-                                NavigationLink("View All"){
-                                    LogListView(habit: habit)
-                                }
-                            }
-                        }
-                        .padding(10)
+                    if habit.log.isEmpty {
+                        ContentUnavailableView("No Entrys", systemImage: "pencil")
                     }
-    
+                    else{
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack{
+                                ForEach(habit.log, id: \.self) { entry in
+                                    
+                                    VStack(alignment: .leading){
+                                        Spacer()
+                                        Text(entry.note)
+                                        Spacer()
+                                        Spacer()
+                                        Text("\(entry.date.formattedDate)")
+                                            .font(.caption)
+                                        Spacer()
+                                    }
+                                    .frame(width: 150, height: 125)
+                                    .background(.ultraThinMaterial)
+                                    .shadow(radius: 3)
+                                }
+                                if habit.log.count >= 4 {
+                                    NavigationLink("View All"){
+                                        LogListView(habit: habit)
+                                    }
+                                }
+                            }
+                            .padding(10)
+                        }
+                    }
                 }
             }
             .navigationTitle(habit.name)
@@ -114,10 +118,10 @@ struct HabitDetailView: View {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Habit.self, configurations: config)
         let testHabit = Habit(name: "Gym", type: "Productive")
-        testHabit.log.append(Entry(note: "Testing a "))
-        testHabit.log.append(Entry(note: "Testing a note"))
-        testHabit.log.append(Entry(note: "Testing a note"))
-        testHabit.log.append(Entry(note: "Testing a note"))
+//        testHabit.log.append(Entry(note: "Testing a "))
+//        testHabit.log.append(Entry(note: "Testing a note"))
+//        testHabit.log.append(Entry(note: "Testing a note"))
+//        testHabit.log.append(Entry(note: "Testing a note"))
         
         
         return HabitDetailView(habit: testHabit)
