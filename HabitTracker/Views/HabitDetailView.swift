@@ -29,7 +29,12 @@ struct HabitDetailView: View {
         NavigationStack {
             ScrollView{
                 VStack(alignment: .leading){
-                    VStack{
+                    VStack(alignment: .leading){
+                        
+                        Text("\(habit.type) habit \(habit.type == "Productive" ? "🤩" : "👎")")
+                            .padding(.bottom)
+                            .font(.headline)
+                        
                         TextField("Entry Note", text: $note, axis: .vertical)
                             .textFieldStyle(.roundedBorder)
                             .focused($entryKeyFocused)
