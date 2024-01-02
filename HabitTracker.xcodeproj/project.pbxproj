@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E209C0512B40CC7D00EBDE00 /* HabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E209C0502B40CC7D00EBDE00 /* HabitListView.swift */; };
+		E2364CAA2B447F5200938E95 /* EditHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2364CA92B447F5200938E95 /* EditHabitView.swift */; };
 		E24B7E702B3F8EE90061C1A9 /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24B7E6F2B3F8EE90061C1A9 /* HabitDetailView.swift */; };
 		E24B7E722B3F8FFC0061C1A9 /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24B7E712B3F8FFC0061C1A9 /* AddHabitView.swift */; };
 		E27C42F42B3AA9320015ADAC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27C42F32B3AA9320015ADAC /* Extensions.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		E209C0502B40CC7D00EBDE00 /* HabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListView.swift; sourceTree = "<group>"; };
+		E2364CA92B447F5200938E95 /* EditHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitView.swift; sourceTree = "<group>"; };
 		E24B7E6F2B3F8EE90061C1A9 /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
 		E24B7E712B3F8FFC0061C1A9 /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
 		E27C42F32B3AA9320015ADAC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				E2EEEB8D2B436C0000AE1615 /* LogListView.swift */,
 				E24B7E712B3F8FFC0061C1A9 /* AddHabitView.swift */,
 				E209C0502B40CC7D00EBDE00 /* HabitListView.swift */,
+				E2364CA92B447F5200938E95 /* EditHabitView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				E2BCB20D2B3F507D00592082 /* Habit.swift in Sources */,
 				E2DEEB932B38BDE7000395A9 /* HabitTrackerApp.swift in Sources */,
 				E2EEEB8E2B436C0000AE1615 /* LogListView.swift in Sources */,
+				E2364CAA2B447F5200938E95 /* EditHabitView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -87,7 +87,6 @@ struct HabitDetailView: View {
                 }
             }
             .navigationTitle(habit.name)
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem{
                     Button("Edit"){
@@ -96,6 +95,11 @@ struct HabitDetailView: View {
                 }
             }
             .confirmationDialog("Delete Habit", isPresented: $showingConfirmation) {
+                
+                NavigationLink(destination: EditHabitView(habit: habit)){
+                    Button("Edit Habit"){}
+                }
+                
                 Button("Delete" , role: .destructive) {
                     showingDeleteAlert.toggle()
                 }
