@@ -39,6 +39,7 @@ struct AddHabitView: View {
                         context.insert(newHabit)
                         dismiss()
                     }
+                    .disabled(Habit.validTextInput(input: name))
                 }
             }
             .navigationTitle("Add Habit")

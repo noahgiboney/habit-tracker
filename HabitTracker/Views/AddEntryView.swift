@@ -15,10 +15,6 @@ struct AddEntryView: View {
     @State private var date = Date()
     @FocusState private var entryKeyFocused: Bool
     
-    var validEntry: Bool {
-        note.isEmpty
-    }
-    
     var body: some View {
         NavigationStack{
             Form{
@@ -35,7 +31,7 @@ struct AddEntryView: View {
                     note = ""
                     dismiss()
                 }
-                .disabled(validEntry)
+                .disabled(Habit.validTextInput(input: note))
             }
             .navigationTitle("New Entry")
             .navigationBarTitleDisplayMode(.inline)
