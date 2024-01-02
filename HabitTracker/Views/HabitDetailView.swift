@@ -10,7 +10,14 @@ import SwiftUI
 struct HabitDetailView: View {
     
     var habit: Habit
+    
+    @Environment(\.modelContext) var context
+    @Environment(\.dismiss) var dismiss
+    
     @State private var note = ""
+    @State private var showingConfirmation = false
+    @State private var showingDeleteAlert = false
+    
     @FocusState private var entryKeyFocused: Bool
     
     var validEntry: Bool {
@@ -73,14 +80,31 @@ struct HabitDetailView: View {
                         }
                         .padding(10)
                     }
-                    
-                    Rectangle()
-                        .frame(height: 2)
-                        .padding()
+    
                 }
             }
             .navigationTitle(habit.name)
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar{
+                ToolbarItem{
+                    Button("Edit"){
+                        showingConfirmation.toggle()
+                    }
+                }
+            }
+            .confirmationDialog("Delete Habit", isPresented: $showingConfirmation) {
+                Button("Delete" , role: .destructive) {
+                    showingDeleteAlert.toggle()
+                }
+            }
+            .alert("Delete Habit", isPresented: $showingDeleteAlert) {
+                Button("Delete", role: .destructive){
+                    context.delete(habit)
+                    dismiss()
+                }
+            } message: {
+                Text("Are you sure you want to delete \(habit.name) habit?")
+            }
         }
     }
 }
