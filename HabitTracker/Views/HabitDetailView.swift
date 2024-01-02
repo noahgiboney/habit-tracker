@@ -11,6 +11,7 @@ struct HabitDetailView: View {
     
     var habit: Habit
     @State private var note = ""
+    @FocusState private var entryKeyFocused: Bool
     
     var validEntry: Bool {
         note.isEmpty
@@ -24,11 +25,14 @@ struct HabitDetailView: View {
                     VStack{
                         TextField("Entry Note", text: $note, axis: .vertical)
                             .textFieldStyle(.roundedBorder)
+                            .focused($entryKeyFocused)
                         
                         Button("Add Entry"){
                             let newEntry = Entry(note: note)
                             habit.log.insert(newEntry, at: 0)
+                            entryKeyFocused.toggle()
                             note = ""
+
                         }
                         .disabled(validEntry)
                         .padding(.top)

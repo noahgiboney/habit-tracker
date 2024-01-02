@@ -12,6 +12,7 @@ struct ContentView: View {
     @Query var habits: [Habit]
     
     @State private var showingAddSheet = false
+    @State private var showingDeleteAlert = false
     
     let typeOptions = ["All", "Productive", "Destructive" ]
     @State private var habitDisplayType = "All"
@@ -36,6 +37,15 @@ struct ContentView: View {
             .sheet(isPresented: $showingAddSheet){
                 AddHabitView()
             }
+            .alert("Delete Habit",isPresented: $showingDeleteAlert){
+                Button("Cancel") {}
+                Button("Delete", role: .destructive){
+                    
+                }
+            }message: {
+                Text("Are you sure you want to delete this habit? It's data will be delted along with it")
+            }
+            
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Add", systemImage: "plus"){
@@ -64,5 +74,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    
+    return ContentView()
 }
