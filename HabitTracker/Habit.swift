@@ -25,10 +25,10 @@ class Habit {
     
     func firstFour() -> [Entry]{
         if log.count <= 4 {
-            return Array(log.prefix(4))
+            return Array(log.prefix(log.count))
         }
         else{
-            return Array(log.prefix(log.count))
+            return Array(log.prefix(4))
         }
     }
     
