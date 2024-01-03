@@ -24,7 +24,12 @@ class Habit {
     }
     
     func firstFour() -> [Entry]{
-        return Array(log.prefix(upTo: 4))
+        if log.count <= 4 {
+            return Array(log.prefix(4))
+        }
+        else{
+            return Array(log.prefix(log.count))
+        }
     }
     
     static let habitTypes = ["Productive", "Destructive"]

@@ -54,7 +54,7 @@ struct HabitDetailView: View {
                     else{
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack{
-                                ForEach(habit.log, id: \.self) { entry in
+                                ForEach(habit.firstFour(), id: \.self) { entry in
                                     
                                     VStack(alignment: .leading){
                                         Spacer()
