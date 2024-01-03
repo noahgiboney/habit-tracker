@@ -28,7 +28,6 @@ struct WeekActivityView: View {
                 }
             }
         }
-        .frame(width: .infinity)
     }
 }
 

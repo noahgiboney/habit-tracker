@@ -46,10 +46,14 @@ struct HabitDetailView: View {
     
                     MyDividor()
                     
-                    VStack(alignment: .leading, spacing: 25){
+                    VStack(alignment: .leading, spacing: 15){
                         Text("Your Log")
                             .font(.title)
                             .padding(.leading)
+                        NavigationLink("View All"){
+                            LogListView(habit: habit)
+                        }
+                        .padding(.leading, 30)
                         Button("New Entry"){
                             showingAddEntrySheet.toggle()
                         }
@@ -79,9 +83,6 @@ struct HabitDetailView: View {
                                         .shadow(radius: 3)
                                     }
                                     if habit.log.count >= 4 {
-                                        NavigationLink("View All"){
-                                            LogListView(habit: habit)
-                                        }
                                     }
                                 }
                                 .padding(10)
