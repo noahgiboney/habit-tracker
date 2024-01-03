@@ -23,61 +23,71 @@ struct HabitDetailView: View {
         NavigationStack {
             ScrollView{
                 VStack(alignment: .leading){
-                    VStack(alignment: .leading, spacing: 20){
-                        
+                    
+                    VStack(spacing: 20){
                         Text("\(habit.type) habit \(habit.type == "Productive" ? "🤩" : "👎")")
                             .font(.headline)
-                        
                         Text("Added \(habit.dateAdded.monthDateTime)")
                             .font(.caption)
+                            .padding(.leading)
                     }
-                    .padding()
                     
-                    Divider()
-                        .padding(.horizontal)
+                    MyDividor()
                     
-                    Text("Your Log")
-                        .font(.title)
-                        .padding(.leading)
-                    
-                  
-                    Button("New Entry"){
-                        showingAddEntrySheet.toggle()
+                    VStack(alignment: .leading, spacing: 25){
+                        Text("Activity")
+                            .font(.title)
+                        Text("Total Frequency: \(habit.log.count)")
+                        Text("Weekly Activity:")
+                        WeekActivityView()
+                            .padding(.leading, 30)
                     }
-                    .buttonStyle(.bordered)
                     .padding(.leading)
+    
+                    MyDividor()
                     
-                    
-                    if habit.log.isEmpty {
-                        ContentUnavailableView("No Entrys", systemImage: "pencil")
-                    }
-                    else{
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack{
-                                ForEach(habit.firstFour(), id: \.self) { entry in
-                                    
-                                    VStack(alignment: .leading){
-                                        Spacer()
-                                        Text(entry.note)
-                                        Spacer()
-                                        Spacer()
-                                        Text("\(entry.date.monthDateTime)")
-                                            .font(.caption)
-                                        Spacer()
-                                    }
-                                    .frame(width: 150, height: 125)
-                                    .background(.ultraThinMaterial)
-                                    .cornerRadius(10)
-                                    .shadow(radius: 3)
-                                }
-                                if habit.log.count >= 4 {
-                                    NavigationLink("View All"){
-                                        LogListView(habit: habit)
-                                    }
-                                }
-                            }
-                            .padding(10)
+                    VStack(alignment: .leading, spacing: 25){
+                        Text("Your Log")
+                            .font(.title)
+                            .padding(.leading)
+                        Button("New Entry"){
+                            showingAddEntrySheet.toggle()
                         }
+                        .buttonStyle(.bordered)
+                        .padding(.leading)
+                        
+                        if habit.log.isEmpty {
+                            ContentUnavailableView("No Entrys", systemImage: "pencil")
+                        }
+                        else{
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack{
+                                    ForEach(habit.firstFour(), id: \.self) { entry in
+                                        
+                                        VStack(alignment: .leading){
+                                            Spacer()
+                                            Text(entry.note)
+                                            Spacer()
+                                            Spacer()
+                                            Text("\(entry.date.monthDateTime)")
+                                                .font(.caption)
+                                            Spacer()
+                                        }
+                                        .frame(width: 150, height: 125)
+                                        .background(.ultraThinMaterial)
+                                        .cornerRadius(10)
+                                        .shadow(radius: 3)
+                                    }
+                                    if habit.log.count >= 4 {
+                                        NavigationLink("View All"){
+                                            LogListView(habit: habit)
+                                        }
+                                    }
+                                }
+                                .padding(10)
+                            }
+                        }
+                        
                     }
                 }
             }

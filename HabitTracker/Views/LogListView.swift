@@ -27,6 +27,7 @@ struct LogListView: View {
                 })
             }
             .navigationTitle(habit.name + " Entry Log")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem{
                     EditButton()

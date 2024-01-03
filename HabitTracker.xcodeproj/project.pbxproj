@@ -12,6 +12,8 @@
 		E2364CAE2B449EF100938E95 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2364CAD2B449EF100938E95 /* AddEntryView.swift */; };
 		E24B7E702B3F8EE90061C1A9 /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24B7E6F2B3F8EE90061C1A9 /* HabitDetailView.swift */; };
 		E24B7E722B3F8FFC0061C1A9 /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24B7E712B3F8FFC0061C1A9 /* AddHabitView.swift */; };
+		E2793C632B44E3AD00748AD8 /* WeekActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2793C622B44E3AD00748AD8 /* WeekActivityView.swift */; };
+		E2793C652B44E7A400748AD8 /* MyDividor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2793C642B44E7A400748AD8 /* MyDividor.swift */; };
 		E27C42F42B3AA9320015ADAC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27C42F32B3AA9320015ADAC /* Extensions.swift */; };
 		E283B6812B38D0FA00FA847F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283B6802B38D0FA00FA847F /* Colors.swift */; };
 		E2A300002B41FAEB0067F3D6 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A3FFFF2B41FAEB0067F3D6 /* Entry.swift */; };
@@ -30,6 +32,8 @@
 		E2364CAD2B449EF100938E95 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
 		E24B7E6F2B3F8EE90061C1A9 /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
 		E24B7E712B3F8FFC0061C1A9 /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
+		E2793C622B44E3AD00748AD8 /* WeekActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekActivityView.swift; sourceTree = "<group>"; };
+		E2793C642B44E7A400748AD8 /* MyDividor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDividor.swift; sourceTree = "<group>"; };
 		E27C42F32B3AA9320015ADAC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E283B6802B38D0FA00FA847F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E2A3FFFF2B41FAEB0067F3D6 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 				E2364CA92B447F5200938E95 /* EditHabitView.swift */,
 				E2EEEB8D2B436C0000AE1615 /* LogListView.swift */,
 				E2BCB20A2B3F4FFB00592082 /* ContentView.swift */,
+				E2793C622B44E3AD00748AD8 /* WeekActivityView.swift */,
+				E2793C642B44E7A400748AD8 /* MyDividor.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,6 +187,7 @@
 				E2A300002B41FAEB0067F3D6 /* Entry.swift in Sources */,
 				E209C0512B40CC7D00EBDE00 /* HabitListView.swift in Sources */,
 				E283B6812B38D0FA00FA847F /* Colors.swift in Sources */,
+				E2793C632B44E3AD00748AD8 /* WeekActivityView.swift in Sources */,
 				E2BCB20B2B3F4FFB00592082 /* ContentView.swift in Sources */,
 				E24B7E702B3F8EE90061C1A9 /* HabitDetailView.swift in Sources */,
 				E2F653762B3A68EC00AA7336 /* Modifiers.swift in Sources */,
@@ -189,6 +196,7 @@
 				E2BCB20D2B3F507D00592082 /* Habit.swift in Sources */,
 				E2DEEB932B38BDE7000395A9 /* HabitTrackerApp.swift in Sources */,
 				E2EEEB8E2B436C0000AE1615 /* LogListView.swift in Sources */,
+				E2793C652B44E7A400748AD8 /* MyDividor.swift in Sources */,
 				E2364CAA2B447F5200938E95 /* EditHabitView.swift in Sources */,
 				E2364CAE2B449EF100938E95 /* AddEntryView.swift in Sources */,
 			);
