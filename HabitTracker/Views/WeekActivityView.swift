@@ -30,8 +30,11 @@ struct WeekActivityView: View {
     var body: some View {
         VStack(alignment: .center){
             HStack(spacing: 37){
+                
                 ForEach(weekModel, id:\.self) { index in
+                    let current = calender.component(.weekday, from: .now)
                     Text(layout[index] ?? "?")
+                        .foregroundStyle(current == index ? Color.purple : Color.black)
                 }
             }
             
@@ -89,7 +92,7 @@ struct WeekActivityView: View {
     }
     
     static func calcLastSeven() -> [Date] {
-        var calendar = Calendar.current
+        let calendar = Calendar.current
         var week = [Date]()
         let now = calendar.startOfDay(for: Date()) // Normalize to the start of the current day
 
