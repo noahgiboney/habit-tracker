@@ -13,13 +13,13 @@ struct WeekActivityView: View {
     
     let calender = Calendar.current
     let layout : [Int:String] = [
-        1 : "S",
-        2 : "M",
-        3 : "T",
-        4 : "W",
-        5 : "T",
-        6 : "F",
-        7 : "S"
+        1 : "Sun",
+        2 : "Mon",
+        3 : "Tue",
+        4 : "Wed",
+        5 : "Th",
+        6 : "Fri",
+        7 : "Sat"
     ]
     
     var lastSeven = calcLastSeven()
@@ -29,7 +29,7 @@ struct WeekActivityView: View {
     
     var body: some View {
         VStack(alignment: .center){
-            HStack(spacing: 37){
+            HStack(spacing: 22){
                 
                 ForEach(weekModel, id:\.self) { index in
                     let current = calender.component(.weekday, from: .now)
@@ -38,7 +38,7 @@ struct WeekActivityView: View {
                 }
             }
             
-            HStack(spacing: 31){
+            HStack(spacing: 30){
                 ForEach(Array(weekActivity.enumerated()), id: \.offset) { index, value in
                     Rectangle()
                         .stroke(Color.black)
