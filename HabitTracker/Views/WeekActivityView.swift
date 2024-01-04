@@ -29,7 +29,7 @@ struct WeekActivityView: View {
     
     var body: some View {
         VStack(alignment: .center){
-            HStack(spacing: 22){
+            HStack(spacing: 20){
                 
                 ForEach(weekModel, id:\.self) { index in
                     let current = calender.component(.weekday, from: .now)
@@ -46,6 +46,7 @@ struct WeekActivityView: View {
                         .frame(width: 17, height: 17)
                 }
             }
+            .padding(.leading, 20)
         }.onAppear(perform: {
             getWeekModel()
             getWeekActivity()
