@@ -38,7 +38,7 @@ struct HabitDetailView: View {
                         Text("Activity")
                             .font(.title)
                         Text("Total Frequency: \(habit.log.count)")
-                        Text("Last 7 Days:")
+                        Text("Past Week:")
                         WeekActivityView(habit: habit)
                             .padding(.leading, 30)
                     }
@@ -50,10 +50,6 @@ struct HabitDetailView: View {
                         Text("Your Log")
                             .font(.title)
                             .padding(.leading)
-                        NavigationLink("View All"){
-                            LogListView(habit: habit)
-                        }
-                        .padding(.leading, 30)
                         Button("New Entry"){
                             showingAddEntrySheet.toggle()
                         }
@@ -87,6 +83,10 @@ struct HabitDetailView: View {
                                 }
                                 .padding(10)
                             }
+                            NavigationLink("View All"){
+                                LogListView(habit: habit)
+                            }
+                            .padding(.leading, 30)
                         }
                         
                     }
