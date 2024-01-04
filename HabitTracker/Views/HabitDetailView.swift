@@ -40,7 +40,7 @@ struct HabitDetailView: View {
                         Text("Total Frequency: \(habit.log.count)")
                         Text("Past Week:")
                         WeekActivityView(habit: habit)
-                            .padding(.leading, 30)
+                            .padding(.leading)
                     }
                     .padding(.leading)
     
