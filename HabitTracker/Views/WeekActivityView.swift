@@ -54,7 +54,7 @@ struct WeekActivityView: View {
     
     func getWeekActivity() {
         weekActivity.removeAll()
-        let calendar = Calendar.current // Ensure this is configured with the correct time zone
+        let calendar = Calendar.current
 
         for day in lastSeven {
             var found = false
@@ -66,7 +66,7 @@ struct WeekActivityView: View {
 
                 if startOfDay == entryStartOfDay {
                     weekActivity.append(true)
-                    found = true // Set the flag to true
+                    found = true
                     break
                 }
             }
@@ -79,9 +79,6 @@ struct WeekActivityView: View {
         print(weekActivity)
     }
 
-
-    
-    
     func getWeekModel() {
         weekModel.removeAll()
         for index in lastSeven {
@@ -94,14 +91,14 @@ struct WeekActivityView: View {
     static func calcLastSeven() -> [Date] {
         let calendar = Calendar.current
         var week = [Date]()
-        let now = calendar.startOfDay(for: Date()) // Normalize to the start of the current day
+        let now = calendar.startOfDay(for: Date())
 
         for index in (0...6) {
             if let previous = calendar.date(byAdding: .day, value: -index, to: now) {
                 week.append(previous)
             }
         }
-        return week.reversed() // This will return the dates in ascending order from the farthest to the closest to today.
+        return week
     }}
 
 #Preview {
