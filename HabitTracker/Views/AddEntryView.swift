@@ -4,16 +4,18 @@
 //
 //  Created by Noah Giboney on 1/2/24.
 //
-
 import SwiftUI
 
 struct AddEntryView: View {
     
-    var habit: Habit
     @Environment(\.dismiss) var dismiss
+    
+    @FocusState private var entryKeyFocused: Bool
+    
     @State private var note = ""
     @State private var date = Date()
-    @FocusState private var entryKeyFocused: Bool
+    
+    var habit: Habit
     
     var body: some View {
         NavigationStack{
@@ -25,12 +27,7 @@ struct AddEntryView: View {
                     DatePicker("When?", selection: $date, in: ...Date())
                 }
                 
-                Button("Add"){
-                    habit.log.insert(Entry(note: note, date: date), at: 0)
-                    entryKeyFocused.toggle()
-                    note = ""
-                    dismiss()
-                }
+                Button("Add", action: addEntry)
                 .disabled(Habit.validTextInput(input: note))
             }
             .navigationTitle("New Entry")
@@ -43,6 +40,13 @@ struct AddEntryView: View {
                 }
             }
         }
+    }
+    
+    func addEntry() {
+        habit.log.insert(Entry(note: note, date: date), at: 0)
+        entryKeyFocused.toggle()
+        note = ""
+        dismiss()
     }
 }
 
