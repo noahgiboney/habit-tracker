@@ -9,23 +9,22 @@ import SwiftUI
 
 struct HabitDetailView: View {
     
-    var habit: Habit
-    
     @Environment(\.modelContext) var context
     @Environment(\.dismiss) var dismiss
     
     @State private var showingAddEntrySheet = false
     @State private var showingConfirmation = false
     @State private var showingDeleteAlert = false
-
+    
+    var habit: Habit
+    
     var body: some View {
-        
         NavigationStack {
             ScrollView{
                 VStack(alignment: .leading){
                     
                     VStack(spacing: 20){
-                        Text("\(habit.type) habit \(habit.type == "Productive" ? "🤩" : "👎")")
+                        Text("\(habit.type) habit \(habit.type == "Productive" ? "👍" : "👎")")
                             .font(.headline)
                         Text("Added \(habit.dateAdded.monthDateTime)")
                             .font(.caption)
@@ -88,7 +87,6 @@ struct HabitDetailView: View {
                             }
                             .padding(.leading, 30)
                         }
-                        
                     }
                 }
             }
@@ -135,7 +133,6 @@ struct HabitDetailView: View {
         testHabit.log.append(Entry(note: "Testing a note", date: .now))
         testHabit.log.append(Entry(note: "Testing a note", date: .now))
         testHabit.log.append(Entry(note: "Testing a note", date: .now))
-        
         
         return HabitDetailView(habit: testHabit)
             .modelContainer(container)
