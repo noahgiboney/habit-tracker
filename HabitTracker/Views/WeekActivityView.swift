@@ -9,9 +9,9 @@ import SwiftUI
 
 struct WeekActivityView: View {
     
-    var habit: Habit
+    @State private var weekModel: [Int] = []
+    @State private var weekActivity: [Bool] = []
     
-    let calender = Calendar.current
     let layout : [Int:String] = [
         1 : "Sun",
         2 : "Mon",
@@ -22,23 +22,23 @@ struct WeekActivityView: View {
         7 : "Sat"
     ]
     
+    let calendar = Calendar.current
     var lastSeven = calcLastSeven()
-    
-    @State private var weekModel: [Int] = []
-    @State private var weekActivity: [Bool] = []
+    var habit: Habit
     
     var body: some View {
         VStack(alignment: .center){
             HStack(spacing: 20){
                 
                 ForEach(weekModel, id:\.self) { index in
-                    let current = calender.component(.weekday, from: .now)
+                    let current = calendar.component(.weekday, from: .now)
                     Text(layout[index] ?? "?")
                         .foregroundStyle(current == index ? Color.purple : Color.black)
                 }
             }
             
             HStack(spacing: 30){
+        
                 ForEach(Array(weekActivity.enumerated()), id: \.offset) { index, value in
                     Rectangle()
                         .stroke(Color.black)
@@ -54,17 +54,18 @@ struct WeekActivityView: View {
     }
     
     func getWeekActivity() {
+        
         weekActivity.removeAll()
-        let calendar = Calendar.current
-
+        
         for day in lastSeven {
+            
             var found = false
-
             let startOfDay = calendar.startOfDay(for: day)
-
+            
             for entry in habit.log {
+                
                 let entryStartOfDay = calendar.startOfDay(for: entry.date)
-
+                
                 if startOfDay == entryStartOfDay {
                     weekActivity.append(true)
                     found = true
@@ -75,18 +76,16 @@ struct WeekActivityView: View {
                 weekActivity.append(false)
             }
         }
-
-        print(lastSeven)
-        print(weekActivity)
     }
 
     func getWeekModel() {
+        
         weekModel.removeAll()
-        for index in lastSeven {
-            let weekdayComponent = calender.component(.weekday, from: index)
+        
+        for day in lastSeven {
+            let weekdayComponent = calendar.component(.weekday, from: day)
             weekModel.append(weekdayComponent)
         }
-        print(weekModel)
     }
     
     static func calcLastSeven() -> [Date] {
@@ -107,11 +106,10 @@ struct WeekActivityView: View {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Habit.self, configurations: config)
         let testHabit = Habit(name: "Gym", type: "Productive")
-        testHabit.log.append(Entry(note: "Testing a ", date: .now))
         testHabit.log.append(Entry(note: "Testing a note", date: .now))
         testHabit.log.append(Entry(note: "Testing a note", date: .now))
         testHabit.log.append(Entry(note: "Testing a note", date: .now))
-        
+        testHabit.log.append(Entry(note: "Testing a note", date: .now))
         
         return WeekActivityView(habit: testHabit)
             .modelContainer(container)

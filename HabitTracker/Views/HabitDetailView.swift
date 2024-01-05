@@ -129,7 +129,7 @@ struct HabitDetailView: View {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Habit.self, configurations: config)
         let testHabit = Habit(name: "Gym", type: "Productive")
-        testHabit.log.append(Entry(note: "Testing a ", date: .now))
+        testHabit.log.append(Entry(note: "Testing a note", date: .now))
         testHabit.log.append(Entry(note: "Testing a note", date: .now))
         testHabit.log.append(Entry(note: "Testing a note", date: .now))
         testHabit.log.append(Entry(note: "Testing a note", date: .now))
