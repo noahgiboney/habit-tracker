@@ -10,6 +10,7 @@ import SwiftUI
 struct HabitListView: View {
     
     @Environment(\.modelContext) var context
+    
     @Query var habits: [Habit]
     
     var body: some View {
@@ -18,22 +19,30 @@ struct HabitListView: View {
                 HabitDetailView(habit: habit)
             }label: {
                 VStack(alignment: .leading){
+                    
                     Spacer()
+                    
                     Text(habit.name)
                         .foregroundStyle(habit.type == "Productive" ? .green : .red)
                         .font(.title2)
+                    
                     Spacer()
+                    
                     Text("Since \(habit.dateAdded.monthDate)")
                         .font(.caption)
                 }
             }
         }
         .onDelete(perform: { indexSet in
-            for i in indexSet{
-                let habit = habits[i]
-                context.delete(habit)
-            }
+            deleteHabit(offset: indexSet)
         })
+    }
+    
+    func deleteHabit(offset: IndexSet){
+        for i in offset{
+            let habit = habits[i]
+            context.delete(habit)
+        }
     }
     
     init(filter: String, sortOrder: [SortDescriptor<Habit>]){
