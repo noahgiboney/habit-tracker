@@ -17,21 +17,19 @@ struct EditHabitView: View {
         NavigationStack{
             Form{
                 Section{
-                    TextField("Habit Name", text: $habit.name)
-                    
                     Picker("Change Habit Type", selection: $habit.type){
                         ForEach(Habit.habitTypes, id: \.self) {
                             Text($0)
                         }
                     }
                 }
-                
                 Button("Save"){
                   dismiss()
                 }
                 .buttonStyle(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Button Style@*/DefaultButtonStyle()/*@END_MENU_TOKEN@*/)
             }
-            .navigationTitle("Edit \(habit.name)")
+            .navigationTitle($habit.name)
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
