@@ -8,26 +8,24 @@ import SwiftData
 import SwiftUI
 
 struct ContentView: View {
+    
     @Environment(\.modelContext) var context
+    
     @Query var habits: [Habit]
     
     @State private var showingAddSheet = false
-    
-    let typeOptions = ["All", "Productive", "Destructive" ]
     @State private var habitDisplayType = "All"
     @State private var sortOrder = [SortDescriptor(\Habit.dateAdded, order: .reverse)]
     
+    let typeOptions = ["All", "Productive", "Destructive" ]
+    
     var body: some View {
-        
         NavigationStack{
-            
             List{
-                
                 if habits.isEmpty {
                     ContentUnavailableView("No Habits", systemImage: "book", description: Text("You don't have any habits yet"))
                 }
                 else{
-                    
                     Picker("Displaying", selection: $habitDisplayType){
                         ForEach(typeOptions, id: \.self) { type in
                             Text(type)
@@ -61,15 +59,8 @@ struct ContentView: View {
             }
         }
     }
-    func delete(for offset: IndexSet){
-        for i in offset{
-            let goneHabit = habits[i]
-            context.delete(goneHabit)
-        }
-    }
 }
 
 #Preview {
-    
     return ContentView()
 }
